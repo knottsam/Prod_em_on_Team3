@@ -12,6 +12,8 @@ namespace Prod_em_on_Team3
         public Game1()
         {
             _graphics = new GraphicsDeviceManager(this);
+            _graphics.PreferredBackBufferHeight = 936;
+            _graphics.PreferredBackBufferWidth = 1386;
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
         }

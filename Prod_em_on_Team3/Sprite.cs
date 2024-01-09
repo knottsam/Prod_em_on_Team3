@@ -7,7 +7,7 @@ using System.Diagnostics;
 using System.Security.Permissions;
 using System.Windows.Forms;
 
-namespace Space_Invaders
+namespace Prod_em_on_Team3
 {
     internal class Sprite : Game1
     {
