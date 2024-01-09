@@ -8,6 +8,7 @@ namespace Prod_em_on_Team3
     {
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
+        private Player firstPlayer;
 
         public Game1()
         {
@@ -20,12 +21,16 @@ namespace Prod_em_on_Team3
         {
             // TODO: Add your initialization logic here
 
+            firstPlayer = new Player(new Vector2(_graphics.PreferredBackBufferWidth / 2, _graphics.PreferredBackBufferHeight - 90),
+                new Rectangle(), Color.White);
+
             base.Initialize();
         }
 
         protected override void LoadContent()
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
+            firstPlayer.LoadContent(Content, "Player");
 
             // TODO: use this.Content to load your game content here
         }
@@ -42,7 +47,9 @@ namespace Prod_em_on_Team3
 
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.CornflowerBlue);
+            GraphicsDevice.Clear(Color.DarkOliveGreen);
+            _spriteBatch.Begin();
+            firstPlayer.Draw(_spriteBatch);
 
             // TODO: Add your drawing code here
 
