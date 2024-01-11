@@ -23,15 +23,15 @@ namespace Prod_em_on_Team3
 
         public override void Update(GameTime gameTime, bool gamestarted, int rightedge)
         {
-            if (Keyboard.GetState().IsKeyDown(Keys.Left))
+            if (Keyboard.GetState().IsKeyDown(Keys.W))
             {
                 //left
-                Position = new Vector2(Position.X - 3, Position.Y);
+                Position = new Vector2( Position.X,Position.Y);
             }
-            if (Keyboard.GetState().IsKeyDown(Keys.Right))
+            if (Keyboard.GetState().IsKeyDown(Keys.S))
             {
                 //right
-                Position = new Vector2(Position.X + 3, Position.Y);
+                Position = new Vector2(Position.X, Position.Y);
             }
 
 

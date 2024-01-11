@@ -39,6 +39,7 @@ namespace Prod_em_on_Team3
         {
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
+            firstPlayer.Update(gameTime, true, _graphics.PreferredBackBufferWidth);
 
             // TODO: Add your update logic here
 
@@ -50,6 +51,7 @@ namespace Prod_em_on_Team3
             GraphicsDevice.Clear(Color.DarkOliveGreen);
             _spriteBatch.Begin();
             firstPlayer.Draw(_spriteBatch);
+            _spriteBatch.End();
 
             // TODO: Add your drawing code here
 
