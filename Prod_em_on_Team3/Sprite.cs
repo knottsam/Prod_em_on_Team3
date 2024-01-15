@@ -23,7 +23,7 @@ namespace Prod_em_on_Team3
             _spriteColor = spriteColor;
         }
 
-        public virtual void LoadContent(ContentManager contentManager, SpriteBatch spriteBatch, string type, string TextureName)
+        public virtual void LoadContent(ContentManager contentManager, SpriteBatch spriteBatch, string TextureName)
         {
             contentManager.RootDirectory = "Content";
 
@@ -31,7 +31,7 @@ namespace Prod_em_on_Team3
             _spritePosition = new Vector2(_spritePosition.X - (_spriteTexture.Width / 2), _spritePosition.Y - _spriteTexture.Height);
         }
 
-        public virtual void Update(GameTime gameTime, bool gameStarted, int rightEdge)
+        public virtual void Update(GameTime gameTime, int rightEdge)
         {
 
 
@@ -52,7 +52,6 @@ namespace Prod_em_on_Team3
             get { return _boundingBox; }
             set { _boundingBox = value; }
         }
-
         public Texture2D SpriteTexture
         {
             get { return _spriteTexture; }

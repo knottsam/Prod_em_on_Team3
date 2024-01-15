@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using System.Collections.Generic;
 
 namespace Prod_em_on_Team3
 {
@@ -8,7 +9,9 @@ namespace Prod_em_on_Team3
     {
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
+        private List<EnemyObj> EnemyTypes;
 
+        private const int enemyTypes = 5;
         public Game1()
         {
             _graphics = new GraphicsDeviceManager(this);
@@ -20,8 +23,6 @@ namespace Prod_em_on_Team3
 
         protected override void Initialize()
         {
-            // TODO: Add your initialization logic here
-
             base.Initialize();
         }
 
@@ -29,6 +30,7 @@ namespace Prod_em_on_Team3
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
 
+            EnemyTypes = EnemyHandler.InitialiseSprites(_graphics, Content, _spriteBatch, enemyTypes);
             // TODO: use this.Content to load your game content here
         }
 
