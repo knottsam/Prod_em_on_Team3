@@ -5,7 +5,7 @@ namespace Prod_em_on_Team3
 {
     internal class EnemyObj
     {
-        private Sprite[] instanceSprites = new Sprite[1];
+        private Sprite[] instanceSprites = new Sprite[2];
 
         private int _healthPoints;
         private int _contactDMG;

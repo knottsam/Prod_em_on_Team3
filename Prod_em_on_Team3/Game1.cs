@@ -11,7 +11,7 @@ namespace Prod_em_on_Team3
         private SpriteBatch _spriteBatch;
         private List<EnemyObj> EnemyTypes;
 
-        private const int enemyTypes = 5;
+        private const int enemyTypes = 1;
         public Game1()
         {
             _graphics = new GraphicsDeviceManager(this);
