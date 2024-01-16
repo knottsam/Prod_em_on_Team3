@@ -3,11 +3,11 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using Prod_em_on_Team3.Content;
+using Prod_em_on_Team3;
 using System;
 using Keyboard = Microsoft.Xna.Framework.Input.Keyboard;
 
-namespace Space_invaders
+namespace Prod_em_on_Team3
 {
     public class Player : Sprite
     {
@@ -32,32 +32,34 @@ namespace Space_invaders
 
         }
 
-        public override void Update(GameTime gameTime)
+        public override void Update(GameTime gameTime, bool gameStarted, int rightEdge)
         {
             keyboard = Keyboard.GetState();
-            if (Keyboard.GetState().IsKeyDown(Keys.W))
+           
+
+
+            if (Keyboard.GetState().IsKeyDown(Keys.A))
             {
-                //up
-                Position = new Vector2(Position.Y, Position.X + 3);
-                // _spritePosition.Y -= 3; // _position.y = _position..y-1
+                //left
+                Position = new Vector2(Position.X - 5, Position.Y);
+            }
+            if (Keyboard.GetState().IsKeyDown(Keys.D))
+            {
+                //right
+                Position = new Vector2(Position.X + 5, Position.Y);
             }
             if (Keyboard.GetState().IsKeyDown(Keys.S))
             {
                 //down
-                Position = new Vector2(Position.X, Position.Y + 3);
+                Position = new Vector2(Position.X, Position.Y + 5);
                // _spritePosition.Y += 3
             }
-            if (Keyboard.GetState().IsKeyDown(Keys.D))
+            if (Keyboard.GetState().IsKeyDown(Keys.W))
             {
-                //left
-                Position = new Vector2(Position.X, Position.Y - 3);
+                //up
+                Position = new Vector2(Position.X, Position.Y - 5);
             }
-            if (Keyboard.GetState().IsKeyDown(Keys.A))
-            {
-                //right
-                Position = new Vector2(Position.Y, Position.X - 3);
-                // _spritePosition.X += 3;
-            }
+          
         }
 
 

@@ -1,8 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using Space_invaders;
-
 namespace Prod_em_on_Team3
 {
     public class Game1 : Game
@@ -10,6 +8,7 @@ namespace Prod_em_on_Team3
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
         private Player firstPlayer;
+
 
         public Game1()
         {
@@ -21,8 +20,8 @@ namespace Prod_em_on_Team3
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
-            firstPlayer = new Player(new Vector2(_graphics.PreferredBackBufferWidth / 2, _graphics.PreferredBackBufferHeight - 90),
-               new Rectangle(), Color.White);
+            firstPlayer = new Player(new Vector2(_graphics.PreferredBackBufferWidth / 2  , _graphics.PreferredBackBufferHeight / 2),
+                new Rectangle(), Color.White);
 
             base.Initialize();
         }
