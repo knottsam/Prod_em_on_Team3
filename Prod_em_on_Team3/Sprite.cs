@@ -3,7 +3,9 @@ using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Prod_em_on_Team3;
 using SharpDX.Direct3D9;
+using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
 using System.Security.Permissions;
 using System.Windows.Forms;
 
@@ -11,6 +13,7 @@ namespace Prod_em_on_Team3
 {
     public class Sprite : Game1
     {
+
         private Texture2D _spriteTexture;
         private Vector2 _spritePosition;
         private Rectangle _boundingBox;
