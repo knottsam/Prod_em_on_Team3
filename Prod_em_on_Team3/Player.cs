@@ -5,17 +5,17 @@ using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
 using System.Linq;
 using System;
-using SharpDX.Direct3D9;
 
 namespace Prod_em_on_Team3
 {
-    internal class Player : Sprite
+    internal class Player
     {
 
         protected AnimationManager _animationManager;
         protected Dictionary<string, Animation> _animations;
         protected Vector2 _position;
         protected Texture2D _texture;
+        protected Rectangle _hitBox;
 
         //Stats
         private int Health = 6; //20 max
@@ -50,13 +50,15 @@ namespace Prod_em_on_Team3
             if (Keyboard.GetState().IsKeyDown(Keys.A))
                 _position.X -= moveSpeed * 5;
             if (Keyboard.GetState().IsKeyDown(Keys.S))
-                    _position.Y += moveSpeed * 5;
+                _position.Y += moveSpeed * 5;
             if (Keyboard.GetState().IsKeyDown(Keys.D))
                 _position.X += moveSpeed * 5;
 
             SetAnimations();
 
             _animationManager.Position = _position;
+
+
             _animationManager.Update(gameTime);
         }
 
@@ -64,7 +66,7 @@ namespace Prod_em_on_Team3
         public virtual void Draw(SpriteBatch spriteBatch)
         {
             if (_texture != null)
-                spriteBatch.Draw(_texture, Position, Color.White);
+                spriteBatch.Draw(_texture, _animationManager.Position, new Rectangle((int)_position.X, (int)_position.Y, 1,1), Color.White);
             else if (_animationManager != null)
                 _animationManager.Draw(spriteBatch);
             else
@@ -113,6 +115,12 @@ namespace Prod_em_on_Team3
         {
             get { return BulletSpeed; }
             set { BulletSpeed = value; }
+        }
+
+        public Rectangle BoundingBox
+        {
+            get { return _hitBox; }
+            set { _hitBox = value; }
         }
     }
 }

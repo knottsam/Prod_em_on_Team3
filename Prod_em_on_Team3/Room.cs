@@ -20,6 +20,7 @@ namespace Prod_em_on_Team3
         public int Height;
         public int X;
         public int Y;
+        public bool visibility = true;
 
         public Room() { }
 
@@ -31,7 +32,6 @@ namespace Prod_em_on_Team3
             Height = inHeight;
             X = inX;
             Y = inY;
-
         }
 
         public virtual bool LoadContent(ContentManager contentManager, SpriteBatch spriteBatch, string roomName)
@@ -45,11 +45,18 @@ namespace Prod_em_on_Team3
 
             base.LoadContent(contentManager, spriteBatch, roomName);
 
+            BoundingBox = new Rectangle(X, Y, SpriteTexture.Width, SpriteTexture.Height);
+
             RoomController.instance.RegisterRoom(this);
 
             return true;
         }
 
+        public bool Visible
+        {
+            get { return visibility; }
+            set { visibility = value; }
+        }
 
         public Vector2 GetRoomCenter()
         {
