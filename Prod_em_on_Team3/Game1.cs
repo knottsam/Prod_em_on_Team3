@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using Space_invaders.Content;
 
 namespace Prod_em_on_Team3
 {
@@ -9,6 +10,8 @@ namespace Prod_em_on_Team3
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
         private Player firstPlayer;
+        private Enemy firstEnemy;
+
 
         public Game1()
         {
@@ -20,8 +23,7 @@ namespace Prod_em_on_Team3
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
-
-            firstPlayer = new Player(new Vector2(_graphics.PreferredBackBufferWidth / 2, _graphics.PreferredBackBufferHeight - 90),
+            firstPlayer = new Player(new Vector2(_graphics.PreferredBackBufferWidth / 2, _graphics.PreferredBackBufferHeight / 2),
                 new Rectangle(), Color.White);
 
             base.Initialize();
@@ -31,6 +33,8 @@ namespace Prod_em_on_Team3
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
             firstPlayer.LoadContent(Content, "Player");
+            firstEnemy.LoadContent(Content, "Enemy");
+
 
             // TODO: use this.Content to load your game content here
         }
@@ -39,7 +43,8 @@ namespace Prod_em_on_Team3
         {
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
-            firstPlayer.Update(gameTime, true, _graphics.PreferredBackBufferWidth);
+            firstPlayer.Update(gameTime, true, _graphics.PreferredBackBufferWidth); //FIX THIS... other class issue
+
 
             // TODO: Add your update logic here
 
@@ -48,14 +53,16 @@ namespace Prod_em_on_Team3
 
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.DarkOliveGreen);
+            GraphicsDevice.Clear(Color.Black);
             _spriteBatch.Begin();
             firstPlayer.Draw(_spriteBatch);
+
             _spriteBatch.End();
 
             // TODO: Add your drawing code here
 
             base.Draw(gameTime);
         }
+
     }
 }

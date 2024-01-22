@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using System.Windows.Forms.VisualStyles;
 
 namespace Prod_em_on_Team3
 {
@@ -26,7 +27,7 @@ namespace Prod_em_on_Team3
             _spritetexture = mycontent.Load<Texture2D>(textureName);
 
         }
-        public virtual void Update(GameTime gameTime, bool gamestrated, int rightedge)
+        public virtual void Update(GameTime gameTime, bool gameStarted, int rightEdge)
         {
 
         }
