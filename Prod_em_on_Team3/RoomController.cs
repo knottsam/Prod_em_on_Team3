@@ -128,19 +128,19 @@ namespace Prod_em_on_Team3
 
             if(DoesRoomExist(room.X+1, room.Y))
             {
-                room.AddDoor("Right");
+                room.AddDoor("Right", room.Position + new Vector2(580, 380));
             }
             if (DoesRoomExist(room.X, room.Y+1))
             {
-                room.AddDoor("Bottom");
+                room.AddDoor("Bottom", room.Position + new Vector2(880, 200));
             }
             if (DoesRoomExist(room.X - 1, room.Y))
             {
-                room.AddDoor("Left");
+                room.AddDoor("Left", room.Position + new Vector2(200, 380));
             }
             if (DoesRoomExist(room.X, room.Y-1))
             {
-                room.AddDoor("Up");
+                room.AddDoor("Up", room.Position + new Vector2(580, 900));
             }
 
 

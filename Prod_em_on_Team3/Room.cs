@@ -7,7 +7,6 @@ using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using System.Reflection.Metadata;
 using System.Linq;
-using SharpDX.Direct3D9;
 
 namespace Prod_em_on_Team3
 {
@@ -21,8 +20,13 @@ namespace Prod_em_on_Team3
         public int Y;
         public bool visibility = false;
         public bool wallCollision = true;
-        public Dictionary<string, Animation> Doors;
-        public AnimationManager AnimationManager;
+        public Dictionary<string, Animation> DoorsAnims;
+        public AnimationManager topDoor;
+        public AnimationManager bottomDoor;
+        public AnimationManager leftDoor;
+        public AnimationManager rightDoor;
+        
+
 
         public Room() { }
 
@@ -38,7 +42,7 @@ namespace Prod_em_on_Team3
 
         public virtual bool LoadContent(ContentManager contentManager, SpriteBatch spriteBatch, string roomName)
         {
-             Doors = new Dictionary<string, Animation>()
+             DoorsAnims = new Dictionary<string, Animation>()
              {
                 { "TopDoor", new Animation(contentManager.Load<Texture2D>("TopDoor"), 2) },
                 { "LeftDoor", new Animation(contentManager.Load<Texture2D>("LeftDoor"), 2) },
@@ -46,7 +50,10 @@ namespace Prod_em_on_Team3
                 { "RightDoor", new Animation(contentManager.Load<Texture2D>("RightDoor"), 2) }
              };
 
-            AnimationManager = new AnimationManager(Doors.First().Value, 0.5f);
+            topDoor = new AnimationManager(DoorsAnims["TopDoor"], 0.5f);
+            rightDoor = new AnimationManager(DoorsAnims["RightDoor"], 0.5f);
+            leftDoor = new AnimationManager(DoorsAnims["LeftDoor"], 0.5f);
+            bottomDoor = new AnimationManager(DoorsAnims["BottomDoor"], 0.5f);
 
             if (RoomController.instance == null)
             {
@@ -64,9 +71,13 @@ namespace Prod_em_on_Team3
 
         public virtual void Draw(GameTime gameTime, SpriteBatch spriteBatch)
         {
-            AnimationManager.Draw(spriteBatch);
 
             base.Draw(gameTime, spriteBatch);
+
+            topDoor.Draw(spriteBatch);
+            rightDoor.Draw(spriteBatch);
+            leftDoor.Draw(spriteBatch);
+            bottomDoor.Draw(spriteBatch);
         }
 
         public virtual void Update(GameTime gameTime, SpriteBatch spriteBatch)
@@ -74,6 +85,11 @@ namespace Prod_em_on_Team3
 
 
             UpdateDoors();
+
+            topDoor.Update(gameTime);
+            rightDoor.Update(gameTime);
+            leftDoor.Update(gameTime);
+            bottomDoor.Update(gameTime);
 
             base.Update(gameTime);
         }
@@ -86,14 +102,36 @@ namespace Prod_em_on_Team3
                 
             }
             else
-                AnimationManager.Stop();
+            {
+                topDoor.Stop();
+                rightDoor.Stop();
+                leftDoor.Stop();
+                bottomDoor.Stop();
+            }
 
 
         }
 
-        public void AddDoor(string Type)
+        public void AddDoor(string Type, Vector2 DoorPos)
         {
-
+            if (Type == "Right")
+            {
+                Debug.WriteLine(rightDoor.Position);
+                rightDoor.Position = DoorPos;
+                Debug.WriteLine(rightDoor.Position);
+            }
+            if (Type == "Bottom")
+            {
+                bottomDoor.Position = DoorPos;
+            }
+            if (Type == "Left")
+            {
+                leftDoor.Position = DoorPos;
+            }
+            if (Type == "Up")
+            {
+                topDoor.Position = DoorPos;
+            }
         }
 
         public bool Visible
