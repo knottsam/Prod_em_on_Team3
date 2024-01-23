@@ -1,7 +1,10 @@
 ﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using Space_invaders.Content;
+using Prod_em_on_Team3;
+using System;
+using Keyboard = Microsoft.Xna.Framework.Input.Keyboard;
 
 namespace Prod_em_on_Team3
 {
@@ -24,6 +27,8 @@ namespace Prod_em_on_Team3
         {
             // TODO: Add your initialization logic here
             firstPlayer = new Player(new Vector2(_graphics.PreferredBackBufferWidth / 2, _graphics.PreferredBackBufferHeight / 2),
+                new Rectangle(), Color.White);
+            firstEnemy = new Enemy(new Vector2(_graphics.PreferredBackBufferWidth / 2, _graphics.PreferredBackBufferHeight / 5),
                 new Rectangle(), Color.White);
 
             base.Initialize();
@@ -56,6 +61,7 @@ namespace Prod_em_on_Team3
             GraphicsDevice.Clear(Color.Black);
             _spriteBatch.Begin();
             firstPlayer.Draw(_spriteBatch);
+            firstEnemy.Draw(_spriteBatch);
 
             _spriteBatch.End();
 

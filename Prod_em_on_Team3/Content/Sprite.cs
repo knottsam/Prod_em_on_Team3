@@ -12,6 +12,7 @@ namespace Prod_em_on_Team3
         protected Vector2 _spritePosition;
         protected Rectangle _spriteBox;
         protected Color _spriteColour;
+ 
         public Sprite()
         { }
 
