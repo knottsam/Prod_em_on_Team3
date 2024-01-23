@@ -63,7 +63,7 @@ namespace Prod_em_on_Team3
                 
             }
 
-            _roomController.Update();
+            _roomController.Update(gameTime);
             base.Update(gameTime);
         }
 

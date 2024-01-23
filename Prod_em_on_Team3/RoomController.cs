@@ -5,7 +5,8 @@ using System.Collections.Generic;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Content;
 using System.Diagnostics;
-using SharpDX.MediaFoundation;
+using MonoGame.Extended.Tweening;
+using MonoGame.Extended.Timers;
 
 
 namespace Prod_em_on_Team3
@@ -22,7 +23,7 @@ namespace Prod_em_on_Team3
     {
         private SpriteBatch _spriteBatch;
         private ContentManager content;
-
+        private readonly Tweener _tweener = new Tweener();
         private Camera2D _camera;
 
         public static RoomController instance;
@@ -45,10 +46,10 @@ namespace Prod_em_on_Team3
             _camera = inCam;
         }
 
-        public void Update()
+        public void Update(GameTime gameTime)
         {
-
-            foreach(Room room in loadedRooms)
+            _tweener.Update((float)gameTime.ElapsedGameTime.TotalSeconds);
+            foreach (Room room in loadedRooms)
             {
                 if(room != currentRoom)
                 {
@@ -89,6 +90,11 @@ namespace Prod_em_on_Team3
 
         public void RegisterRoom( Room room)
         {
+            if(DoesRoomExist(currentLoadRoomData.x, currentLoadRoomData.y))
+            {
+                room.Dispose();
+                return;
+            }
             room.Position = new Vector2(
                 currentLoadRoomData.x * room.Width, 
                 currentLoadRoomData.y * room.Height
@@ -150,7 +156,10 @@ namespace Prod_em_on_Team3
             }
 
             inRoom.Visible = true;
-            _camera.Position = inRoom.GetRoomCenter() + new Vector2(580, 380);
+            //_camera.Position = inRoom.GetRoomCenter() + new Vector2(580, 380);
+            _tweener.TweenTo(target: _camera, expression: player => _camera.Position, toValue: inRoom.GetRoomCenter() + new Vector2(580, 380), duration: 0.3f, delay: 0)
+                  .Easing(EasingFunctions.Linear);
+
             currentRoom = inRoom;
         }
 
