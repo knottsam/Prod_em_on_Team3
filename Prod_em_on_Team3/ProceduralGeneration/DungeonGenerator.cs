@@ -13,7 +13,7 @@ namespace Prod_em_on_Team3.ProceduralGeneration
 
         public void Start()
         {
-            dungeonGenerationData = new DungeonGenerationData(4, 5, 8);
+            dungeonGenerationData = new DungeonGenerationData(3, 7, 8);
             dungeonRooms = DungeonCrawlerController.GenerateDungeon(dungeonGenerationData);
             SpawnRooms(dungeonRooms);
         }

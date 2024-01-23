@@ -57,8 +57,6 @@ namespace Prod_em_on_Team3
         {
             Room currentRoom = RoomController.instance.currentRoom;
 
-            Debug.WriteLine("CurrentRoom Coords- " +currentRoom.X+","+currentRoom.Y);
-
             bool canCollide = false;
 
             statusCheck += gameTime.ElapsedGameTime.Milliseconds;

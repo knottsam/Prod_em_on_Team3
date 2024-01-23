@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -67,6 +68,7 @@ namespace Prod_em_on_Team3.ProceduralGeneration
 
     public class DungeonCrawlerController
     {
+        public Vector2Int lastMove;
         public static List<Vector2Int> positionsVisited = new List<Vector2Int>();
 
         private static readonly Dictionary<Direction, Vector2Int> directionMovementMap = new Dictionary<Direction, Vector2Int>
@@ -89,6 +91,8 @@ namespace Prod_em_on_Team3.ProceduralGeneration
             }
 
             int iterations = random.Next(dungeonData.iterationMin, dungeonData.iterationMax);
+
+            Debug.WriteLine(iterations);
 
             for (int i = 0; i < iterations; i ++)
             {

@@ -68,8 +68,6 @@ namespace Prod_em_on_Team3
                 return;
             }
 
-            Debug.WriteLine(x+","+y);
-
             RoomInfo newRoomData = new RoomInfo();
             newRoomData.name = roomName;
             newRoomData.x = x;

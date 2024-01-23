@@ -55,7 +55,6 @@ namespace Prod_em_on_Team3
 
         public void AddDoor(string Type, Vector2 DoorPos, ContentManager content)
         {
-            Debug.WriteLine("AddDoor");
             Door newDoor = new Door(Type, DoorPos);
             newDoor.LoadContent(content);
             roomDoors.Add(newDoor);
