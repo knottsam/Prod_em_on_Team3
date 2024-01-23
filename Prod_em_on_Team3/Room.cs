@@ -19,15 +19,9 @@ namespace Prod_em_on_Team3
         public int X;
         public int Y;
         public bool visibility = false;
-        public bool wallCollision = true;
-        public Dictionary<string, Animation> DoorsAnims;
-        public AnimationManager topDoor;
-        public AnimationManager bottomDoor;
-        public AnimationManager leftDoor;
-        public AnimationManager rightDoor;
+        public Rectangle hitbox;
+        public List<Door> roomDoors;
         
-
-
         public Room() { }
 
         public Room(int inWidth, int inHeight, int inX, int inY) 
@@ -40,98 +34,31 @@ namespace Prod_em_on_Team3
             Y = inY;
         }
 
-        public virtual bool LoadContent(ContentManager contentManager, SpriteBatch spriteBatch, string roomName)
+        public virtual void LoadContent(ContentManager contentManager, SpriteBatch spriteBatch, string roomName)
         {
-             DoorsAnims = new Dictionary<string, Animation>()
-             {
-                { "TopDoor", new Animation(contentManager.Load<Texture2D>("TopDoor"), 2) },
-                { "LeftDoor", new Animation(contentManager.Load<Texture2D>("LeftDoor"), 2) },
-                { "BottomDoor", new Animation(contentManager.Load<Texture2D>("BottomDoor"), 2) },
-                { "RightDoor", new Animation(contentManager.Load<Texture2D>("RightDoor"), 2) }
-             };
-
-            topDoor = new AnimationManager(DoorsAnims["TopDoor"], 0.5f);
-            rightDoor = new AnimationManager(DoorsAnims["RightDoor"], 0.5f);
-            leftDoor = new AnimationManager(DoorsAnims["LeftDoor"], 0.5f);
-            bottomDoor = new AnimationManager(DoorsAnims["BottomDoor"], 0.5f);
-
             if (RoomController.instance == null)
             {
                 Debug.WriteLine("Room instance nil");
-                return false;
+                return;
             }
+
+            roomDoors = new List<Door>();
+
+            hitbox = new Rectangle((X*Width)+205, (Y*Height)+205, 1390, 775);
 
             base.LoadContent(contentManager, spriteBatch, roomName);
             BoundingBox = new Rectangle(X*Width, Y*Height, SpriteTexture.Width, SpriteTexture.Height);
+            Debug.WriteLine("Room Content load");
 
             RoomController.instance.RegisterRoom(this);
-
-            return true;
         }
 
-        public virtual void Draw(GameTime gameTime, SpriteBatch spriteBatch)
+        public void AddDoor(string Type, Vector2 DoorPos, ContentManager content)
         {
-
-            base.Draw(gameTime, spriteBatch);
-
-            topDoor.Draw(spriteBatch);
-            rightDoor.Draw(spriteBatch);
-            leftDoor.Draw(spriteBatch);
-            bottomDoor.Draw(spriteBatch);
-        }
-
-        public virtual void Update(GameTime gameTime, SpriteBatch spriteBatch)
-        {
-
-
-            UpdateDoors();
-
-            topDoor.Update(gameTime);
-            rightDoor.Update(gameTime);
-            leftDoor.Update(gameTime);
-            bottomDoor.Update(gameTime);
-
-            base.Update(gameTime);
-        }
-
-        public void UpdateDoors()
-        {
-
-            if (Player._player.InCombat)
-            {
-                
-            }
-            else
-            {
-                topDoor.Stop();
-                rightDoor.Stop();
-                leftDoor.Stop();
-                bottomDoor.Stop();
-            }
-
-
-        }
-
-        public void AddDoor(string Type, Vector2 DoorPos)
-        {
-            if (Type == "Right")
-            {
-                Debug.WriteLine(rightDoor.Position);
-                rightDoor.Position = DoorPos;
-                Debug.WriteLine(rightDoor.Position);
-            }
-            if (Type == "Bottom")
-            {
-                bottomDoor.Position = DoorPos;
-            }
-            if (Type == "Left")
-            {
-                leftDoor.Position = DoorPos;
-            }
-            if (Type == "Up")
-            {
-                topDoor.Position = DoorPos;
-            }
+            Debug.WriteLine("AddDoor");
+            Door newDoor = new Door(Type, DoorPos);
+            newDoor.LoadContent(content);
+            roomDoors.Add(newDoor);
         }
 
         public bool Visible
@@ -140,10 +67,10 @@ namespace Prod_em_on_Team3
             set { visibility = value; }
         }
 
-        public bool WallCollide
+        public Rectangle Hitbox
         {
-            get { return wallCollision; }
-            set { wallCollision = value; }
+            get { return hitbox; }
+            set { hitbox = value; }
         }
 
         public Vector2 GetRoomCenter()

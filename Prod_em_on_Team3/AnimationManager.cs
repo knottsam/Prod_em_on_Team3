@@ -45,11 +45,11 @@ namespace Prod_em_on_Team3
             _timer = 0;
         }
 
-        public void Stop()
+        public void Stop(int frame)
         {
             _timer = 0f;
 
-            _animation.CurrentFrame = 0;
+            _animation.CurrentFrame = frame;
         }
 
         public void Update(GameTime gameTime)

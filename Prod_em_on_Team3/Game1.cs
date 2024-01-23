@@ -1,7 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
-using System.Diagnostics;
+using Prod_em_on_Team3.ProceduralGeneration;
 
 namespace Prod_em_on_Team3
 {
@@ -28,10 +28,10 @@ namespace Prod_em_on_Team3
 
         protected override void Initialize()
         {
-            _roomController = new RoomController();
             _player = new Player();
+            _roomController = new RoomController();
             _camera = new Camera2D(_resolutionIndependentRenderer);
-            _camera.Zoom = 1.05f;
+            _camera.Zoom = 1.05f; //1.05f
 
             base.Initialize();
         }
@@ -43,14 +43,10 @@ namespace Prod_em_on_Team3
             //EnemyTypes = EnemyHandler.InitialiseSprites(_graphics, Content, _spriteBatch, enemyTypes);
 
             _roomController.Started(Content,_spriteBatch, _camera);
-
-            _roomController.LoadRoom("Start", 0, 0); //Middle or Start Room
-            _roomController.LoadRoom("Room", 1, 0); //Right Room
-            _roomController.LoadRoom("Room", -1, 0); //Left Room
-            _roomController.LoadRoom("Room", 0, 1); //Bottom Room
-            _roomController.LoadRoom("Room", 0, -1); //Top Room
-
             _player.LoadContent(Content);
+            DungeonGenerator generation = new DungeonGenerator();
+            generation.Start();
+
         }
 
         protected override void Update(GameTime gameTime)
@@ -59,8 +55,11 @@ namespace Prod_em_on_Team3
 
             foreach (Room room in _roomController.loadedRooms)
             {
-                if (room.BoundingBox.Intersects(_player.BoundingBox) && room.Visible == false)
-                    room.onCollisionTriggered();
+
+                foreach(Door door in room.roomDoors)
+                {
+                    door.Update(gameTime, _player.InCombat);
+                }
                 
             }
 
@@ -80,8 +79,11 @@ namespace Prod_em_on_Team3
                 if (room.Visible)
                 {
                     room.Draw(gameTime, _spriteBatch);
+                    foreach (Door door in room.roomDoors)
+                    {
+                        door.Draw(_spriteBatch);
+                    }
                 }
-
             }
             _player.Draw(_spriteBatch);
 

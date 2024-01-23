@@ -5,6 +5,7 @@ using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
 using System.Linq;
 using System;
+using System.Diagnostics;
 
 namespace Prod_em_on_Team3
 {
@@ -19,6 +20,7 @@ namespace Prod_em_on_Team3
         protected Texture2D _texture;
         protected Rectangle _hitBox;
         protected Sprite hBoxSprite;
+        protected float statusCheck;
 
         //Stats
         private int Health = 6; //20 max
@@ -29,12 +31,12 @@ namespace Prod_em_on_Team3
         private bool combat = false;
         //Stats
 
-        public static Player _player;
+        public static Player instance;
 
         public new void LoadContent(ContentManager Content)
         {
 
-            _hitBox = new Rectangle(0,0, 224, 160);
+            _hitBox = new Rectangle(0,0, 224, 100);
             _HeadAnimations = new Dictionary<string, Animation>()
             {
                 { "Down", new Animation(Content.Load<Texture2D>("FireDown"), 2) },
@@ -54,14 +56,36 @@ namespace Prod_em_on_Team3
         public virtual void Update(GameTime gameTime)
         {
             Room currentRoom = RoomController.instance.currentRoom;
-            if (Keyboard.GetState().IsKeyDown(Keys.W) && (_position.Y - 160 > currentRoom.Y*currentRoom.Height || false )) //Change false to (if door is there)
-                _position.Y -= moveSpeed * 5;
-            if (Keyboard.GetState().IsKeyDown(Keys.A) && (_position.X - 200 > currentRoom.X * currentRoom.Width || false))
-                _position.X -= moveSpeed * 5;
-            if (Keyboard.GetState().IsKeyDown(Keys.S) && (_position.Y + 270 < currentRoom.Y+1 * currentRoom.Height || false))
-                _position.Y += moveSpeed * 5;
-            if (Keyboard.GetState().IsKeyDown(Keys.D) && (_position.X + 270 < currentRoom.X+1 * currentRoom.Width || false))
-                _position.X += moveSpeed * 5;
+
+            Debug.WriteLine("CurrentRoom Coords- " +currentRoom.X+","+currentRoom.Y);
+
+            bool canCollide = false;
+
+            statusCheck += gameTime.ElapsedGameTime.Milliseconds;
+
+            foreach(Door door in currentRoom.roomDoors)
+            {
+                if (_hitBox.Intersects(door.BoundingBox) && !door.Closed)
+                {
+                    canCollide = true;
+                    if(statusCheck > 500)
+                    {
+                        statusCheck = 0;
+                        _position = door.Enter();
+                    }
+                }
+            }
+
+            int multi = 5;
+
+            if (Keyboard.GetState().IsKeyDown(Keys.W) && (canCollide || (_position.Y - moveSpeed*5) > currentRoom.Hitbox.Location.Y)) //-160
+                _position.Y -= moveSpeed * multi;
+            if (Keyboard.GetState().IsKeyDown(Keys.A) && (canCollide || (_position.X - moveSpeed * 5) > currentRoom.Hitbox.Location.X))//-200
+                _position.X -= moveSpeed * multi;
+            if (Keyboard.GetState().IsKeyDown(Keys.S) && (canCollide || (_position.Y + moveSpeed * 5) < currentRoom.Hitbox.Location.Y + currentRoom.Hitbox.Size.Y))//+270
+                _position.Y += moveSpeed * multi;
+            if (Keyboard.GetState().IsKeyDown(Keys.D) && (canCollide || (_position.X + moveSpeed * 5) < currentRoom.Hitbox.Location.X + currentRoom.Hitbox.Size.X))//+270
+                _position.X += moveSpeed * multi;
 
             SetAnimations();
 
@@ -69,7 +93,7 @@ namespace Prod_em_on_Team3
 
             _animationHeadManager.Position = _position + new Vector2(-18,-87);
 
-            _hitBox = new Rectangle((int)_position.X, (int)_position.Y, 224,160);
+            _hitBox = new Rectangle((int)_position.X, (int)_position.Y, 50,100);
 
             _animationBodyManager.Update(gameTime);
             _animationHeadManager.Update(gameTime);
@@ -100,7 +124,7 @@ namespace Prod_em_on_Team3
             else
             {
                 //_animationManager.Play(_bodyAnimations["WalkVertical"]);
-                _animationBodyManager.Stop();
+                _animationBodyManager.Stop(0);
             }
 
             if (Keyboard.GetState().IsKeyDown(Keys.Down))
@@ -112,7 +136,7 @@ namespace Prod_em_on_Team3
             else
             {
                 //_animationManager.Play(_bodyAnimations["WalkVertical"]);
-                _animationHeadManager.Stop();
+                _animationHeadManager.Stop(0);
             }
         }
 
@@ -152,6 +176,11 @@ namespace Prod_em_on_Team3
             set { combat = value; }
         }
 
+        public Vector2 Position
+        {
+            get { return _position; }
+            set { _position = value;}
+        }
         public Rectangle BoundingBox
         {
             get { return _hitBox; }
