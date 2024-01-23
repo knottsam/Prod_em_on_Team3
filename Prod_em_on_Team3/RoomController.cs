@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Content;
 using System.Diagnostics;
+using SharpDX.MediaFoundation;
 
 namespace Prod_em_on_Team3
 {
@@ -21,11 +22,15 @@ namespace Prod_em_on_Team3
         private SpriteBatch _spriteBatch;
         private ContentManager content;
 
+        private Camera2D _camera;
+
         public static RoomController instance;
 
         string currentFloorName = "Basement";
 
         public RoomInfo currentLoadRoomData;
+
+        public Room currentRoom;
 
         Queue<RoomInfo> loadRoomQueue = new Queue<RoomInfo>();
 
@@ -33,15 +38,24 @@ namespace Prod_em_on_Team3
 
         bool isLoadingRoom = false;
 
-        public void Started(ContentManager inContent, SpriteBatch inSpriteBatch)
+        public void Started(ContentManager inContent, SpriteBatch inSpriteBatch, Camera2D inCam)
         {
             instance = this;
             content = inContent;
             _spriteBatch = inSpriteBatch;
+            _camera = inCam;
         }
 
         public void Update()
         {
+
+            foreach(Room room in loadedRooms)
+            {
+                if(room != currentRoom)
+                {
+                    room.Visible = false;
+                }
+            }
 
             UpdateRoomQueue();
 
@@ -107,6 +121,29 @@ namespace Prod_em_on_Team3
 
             isLoadingRoom = false;
 
+            if (loadedRooms.Count == 0)
+            {
+                _camera.Position = room.GetRoomCenter() + new Vector2(580, 380);
+            }
+
+            if(DoesRoomExist(room.X+1, room.Y))
+            {
+                room.AddDoor("Right");
+            }
+            if (DoesRoomExist(room.X, room.Y+1))
+            {
+                room.AddDoor("Bottom");
+            }
+            if (DoesRoomExist(room.X - 1, room.Y))
+            {
+                room.AddDoor("Left");
+            }
+            if (DoesRoomExist(room.X, room.Y-1))
+            {
+                room.AddDoor("Up");
+            }
+
+
             loadedRooms.Add(room);
 
         }
@@ -114,6 +151,18 @@ namespace Prod_em_on_Team3
         public bool DoesRoomExist( int x, int y )
         {
             return loadedRooms.Find(item => item.X == x && item.Y == y) != null;
+        }
+
+        public void OnPlayerEnter(Room inRoom)
+        {
+            foreach (Room room in loadedRooms)
+            {
+                room.Visible = false;
+            }
+
+            inRoom.Visible = true;
+            _camera.Position = inRoom.GetRoomCenter() + new Vector2(580, 380);
+            currentRoom = inRoom;
         }
 
     }

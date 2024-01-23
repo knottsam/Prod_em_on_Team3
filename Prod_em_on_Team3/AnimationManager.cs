@@ -16,9 +16,10 @@ namespace Prod_em_on_Team3
 
         public Vector2 Position { get; set; }
 
-        public AnimationManager(Animation animation)
+        public AnimationManager(Animation animation, float frameSpeed)
         {
             _animation = animation;
+            _animation.FrameSpeed = frameSpeed;
         }
 
         public void Draw(SpriteBatch spriteBatch)

@@ -48,7 +48,7 @@ namespace Prod_em_on_Team3
 
         public virtual void Draw(GameTime gameTime, SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(_spriteTexture, _spritePosition, null, _spriteColor);
+            spriteBatch.Draw(_spriteTexture, _spritePosition, _boundingBox, _spriteColor);
         }
 
         public Vector2 Position

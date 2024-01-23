@@ -29,10 +29,9 @@ namespace Prod_em_on_Team3
         protected override void Initialize()
         {
             _roomController = new RoomController();
-            _player = new Player(new Vector2(1864/2,1240 / 2));
+            _player = new Player();
             _camera = new Camera2D(_resolutionIndependentRenderer);
             _camera.Zoom = 1.05f;
-            _camera.Position = new Vector2(580,380);
 
             base.Initialize();
         }
@@ -43,7 +42,7 @@ namespace Prod_em_on_Team3
 
             //EnemyTypes = EnemyHandler.InitialiseSprites(_graphics, Content, _spriteBatch, enemyTypes);
 
-            _roomController.Started(Content,_spriteBatch);
+            _roomController.Started(Content,_spriteBatch, _camera);
 
             _roomController.LoadRoom("Start", 0, 0); //Middle or Start Room
             _roomController.LoadRoom("Room", 1, 0); //Right Room
@@ -60,11 +59,9 @@ namespace Prod_em_on_Team3
 
             foreach (Room room in _roomController.loadedRooms)
             {
-                if (room.BoundingBox.Intersects(_player.BoundingBox)) // Intersect not firing on player.
-                    room.Visible = true;
-                else
-                    //room.Visible = false;
-
+                if (room.BoundingBox.Intersects(_player.BoundingBox) && room.Visible == false)
+                    room.onCollisionTriggered();
+                
             }
 
             _roomController.Update();
@@ -81,7 +78,9 @@ namespace Prod_em_on_Team3
             foreach(Room room in _roomController.loadedRooms)
             {
                 if (room.Visible)
+                {
                     room.Draw(gameTime, _spriteBatch);
+                }
 
             }
             _player.Draw(_spriteBatch);
