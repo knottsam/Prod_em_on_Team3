@@ -49,7 +49,7 @@ namespace Prod_em_on_Team3
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
             firstPlayer.Update(gameTime, true, _graphics.PreferredBackBufferWidth); //FIX THIS... other class issue
-
+            firstEnemy.Update = new Vector2(firstPlayer.Position.X);
 
             // TODO: Add your update logic here
 

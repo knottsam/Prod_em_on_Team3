@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using Microsoft.VisualBasic.Devices;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -17,6 +18,8 @@ namespace Prod_em_on_Team3
         protected int health;
         protected int speed;
         protected int radius;
+        private Player Player
+
 
         public Enemy() : base()
         {
@@ -55,29 +58,11 @@ namespace Prod_em_on_Team3
             position = newPos;
         }
 
-        public void Update(GameTime gameTime, Vector2 playerPos)
+        public override void Update(GameTime gameTime, bool gameStarted, int rightEdge)
         {
-            float dt = (float)gameTime.ElapsedGameTime.TotalSeconds;
-
-
-            Vector2 moveDir = playerPos - position;
-            moveDir.Normalize();
-            position += moveDir * speed * dt;
-            distanceToPlayer = ;
-            int state = 0;
-
-            if (state == 0)
+            if (gameStarted)
             {
-                // Everything the enemy does during "idle"
-                if (distanceToPlayer < 600)
-                {
-                    state = 1;
-                }
-            }
-            else if (state == 1)
-            {
-                // Everything the enemy does during "following"
-                Position += moveDir * speed * dt; // move enemy towards player
+                Position = Player.Position.X 
             }
 
         }
