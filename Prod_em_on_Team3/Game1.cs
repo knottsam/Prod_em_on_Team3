@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Prod_em_on_Team3;
+using Prod_em_on_Team3.Content;
 using System;
 using Keyboard = Microsoft.Xna.Framework.Input.Keyboard;
 
@@ -14,6 +15,7 @@ namespace Prod_em_on_Team3
         private SpriteBatch _spriteBatch;
         private Player firstPlayer;
         private Enemy firstEnemy;
+        private Bullet firstBullet;
 
 
         public Game1()
@@ -30,6 +32,9 @@ namespace Prod_em_on_Team3
                 new Rectangle(), Color.White);
             firstEnemy = new Enemy(new Vector2(_graphics.PreferredBackBufferWidth / 2, _graphics.PreferredBackBufferHeight / 5),
                 new Rectangle(), Color.White);
+            firstBullet = new Bullet(firstPlayer.Position, new Rectangle(), Color.Red, true, firstPlayer);
+
+
 
             base.Initialize();
         }
@@ -39,6 +44,8 @@ namespace Prod_em_on_Team3
             _spriteBatch = new SpriteBatch(GraphicsDevice);
             firstPlayer.LoadContent(Content, "Player");
             firstEnemy.LoadContent(Content, "Enemy");
+            firstBullet.LoadContent(Content, "round ball");
+            
 
 
             // TODO: use this.Content to load your game content here
@@ -49,7 +56,7 @@ namespace Prod_em_on_Team3
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
             firstPlayer.Update(gameTime, true, _graphics.PreferredBackBufferWidth); //FIX THIS... other class issue
-            firstEnemy.Update = new Vector2(firstPlayer.Position.X);
+     
 
             // TODO: Add your update logic here
 
@@ -62,6 +69,7 @@ namespace Prod_em_on_Team3
             _spriteBatch.Begin();
             firstPlayer.Draw(_spriteBatch);
             firstEnemy.Draw(_spriteBatch);
+            firstBullet.Draw(_spriteBatch);
 
             _spriteBatch.End();
 

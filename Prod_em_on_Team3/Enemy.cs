@@ -18,7 +18,7 @@ namespace Prod_em_on_Team3
         protected int health;
         protected int speed;
         protected int radius;
-        private Player Player
+        private Player Player;  
 
 
         public Enemy() : base()
@@ -58,15 +58,7 @@ namespace Prod_em_on_Team3
             position = newPos;
         }
 
-        public override void Update(GameTime gameTime, bool gameStarted, int rightEdge)
-        {
-            if (gameStarted)
-            {
-                Position = Player.Position.X 
-            }
-
-        }
-
+        
 
 
 
