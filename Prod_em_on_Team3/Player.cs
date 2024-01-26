@@ -21,6 +21,7 @@ namespace Prod_em_on_Team3
         protected Rectangle _hitBox;
         protected Sprite hBoxSprite;
         protected float statusCheck;
+        protected float shotDebounce;
 
         //Stats
         private int Health = 6; //20 max
@@ -28,6 +29,9 @@ namespace Prod_em_on_Team3
         private double BulletSpeed = 1;
         private float shotsPerSec = 2.5f;
         private float moveSpeed = 1f;
+        private int gold = 0;
+        private int bombs = 1;
+        private int keys = 0;
         private bool combat = false;
         //Stats
 
@@ -84,6 +88,11 @@ namespace Prod_em_on_Team3
                 _position.Y += moveSpeed * multi;
             if (Keyboard.GetState().IsKeyDown(Keys.D) && (canCollide || (_position.X + moveSpeed * 5) < currentRoom.Hitbox.Location.X + currentRoom.Hitbox.Size.X))//+270
                 _position.X += moveSpeed * multi;
+
+
+            if (Keyboard.GetState().IsKeyDown(Keys.Down))
+                
+
 
             SetAnimations();
 
@@ -168,6 +177,23 @@ namespace Prod_em_on_Team3
             set { BulletSpeed = value; }
         }
 
+        public int Money
+        {
+            get { return gold; }
+            set { gold = value; }
+        }
+
+        public int Bombs
+        {
+            get { return bombs; }
+            set { bombs = value; }
+        }
+
+        public int Key
+        {
+            get { return keys; }
+            set { keys = value; }
+        }
         public bool InCombat
         {
             get { return combat; }

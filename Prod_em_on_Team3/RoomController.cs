@@ -140,7 +140,9 @@ namespace Prod_em_on_Team3
                 {
                     room.AddDoor("Top", room.GetRoomCenter() + new Vector2(825, 80), content);
                 }
+                room.OnRoomReady();
             }
+
         }
 
         public bool DoesRoomExist( int x, int y )
@@ -156,7 +158,6 @@ namespace Prod_em_on_Team3
             }
 
             inRoom.Visible = true;
-            //_camera.Position = inRoom.GetRoomCenter() + new Vector2(580, 380);
             _tweener.TweenTo(target: _camera, expression: player => _camera.Position, toValue: inRoom.GetRoomCenter() + new Vector2(580, 380), duration: 0.3f, delay: 0)
                   .Easing(EasingFunctions.Linear);
 

@@ -1,12 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using Microsoft.Xna;
 using Microsoft.Xna.Framework;
 using System.Diagnostics;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
-using System.Reflection.Metadata;
-using System.Linq;
 
 namespace Prod_em_on_Team3
 {
@@ -21,7 +18,11 @@ namespace Prod_em_on_Team3
         public bool visibility = false;
         public Rectangle hitbox;
         public List<Door> roomDoors;
-        
+        public Rectangle[,] tileMap;
+
+
+        public Texture2D tempTexture;
+
         public Room() { }
 
         public Room(int inWidth, int inHeight, int inX, int inY) 
@@ -32,6 +33,7 @@ namespace Prod_em_on_Team3
             Height = inHeight;
             X = inX;
             Y = inY;
+
         }
 
         public virtual void LoadContent(ContentManager contentManager, SpriteBatch spriteBatch, string roomName)
@@ -41,6 +43,8 @@ namespace Prod_em_on_Team3
                 Debug.WriteLine("Room instance nil");
                 return;
             }
+
+            tempTexture = contentManager.Load<Texture2D>("TempSprite");
 
             roomDoors = new List<Door>();
 
@@ -75,6 +79,11 @@ namespace Prod_em_on_Team3
         public Vector2 GetRoomCenter()
         {
             return new Vector2 (X*Width, Y*Height);
+        }
+
+        public void OnRoomReady()
+        {
+            tileMap = Tilemap.CreateTilemap(GetRoomCenter() + new Vector2(200, 200));
         }
 
         public void onCollisionTriggered()
