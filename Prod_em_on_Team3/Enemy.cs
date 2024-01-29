@@ -18,7 +18,8 @@ namespace Prod_em_on_Team3
         protected int health;
         protected int speed;
         protected int radius;
-        private Player Player;  
+        private Player Player;
+        KeyboardState keyboard, prevkeyboard;
 
 
         public Enemy() : base()
@@ -36,6 +37,16 @@ namespace Prod_em_on_Team3
 
 
         }
+        public override void Update(GameTime gameTime, bool gameStarted, int rightEdge)
+        {
+
+
+
+
+          
+
+        }
+
         public int Health
         {
             get { return health; }
