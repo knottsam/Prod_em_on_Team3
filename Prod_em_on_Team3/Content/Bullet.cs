@@ -38,7 +38,7 @@ namespace Prod_em_on_Team3.Content
         // public void ResetToOwner(Sprite owner)
         public override void Update(GameTime gameTime, bool gamestarted, int rightedge)
         {
-            if (Keyboard.GetState().IsKeyDown(Keys.Space))
+            if (Keyboard.GetState().IsKeyDown(Keys.M))
             {
 
                 bulletFired = true;
@@ -67,15 +67,13 @@ namespace Prod_em_on_Team3.Content
         }
 
 
-        //public void PositionBullet()
-        //{
-        //    int halfway = _ownerSprite.SpriteTexture.Width / 2;
-        //    int topOfSprite = _ownerSprite.SpriteTexture.Height;
+            public void PositionBullet()
+            {
+                int halfway = _ownerSprite.SpriteTexture.Width / 2; 
+                int topOfSprite = _ownerSprite.SpriteTexture.Height;
 
-        //    Position = new Vector2(_ownerSprite.Position.X / 2, SpriteTexture.Width / 2, _ownerSprite.Position.Y);
-
-        //    Position = new Vector2(_ownerSprite.Position.X / 2 + SpriteTexture.Width / 2,_ownerSprite.Position.Y);
-        //}
+                Position = new Vector2(_ownerSprite.Position.X / 2 + SpriteTexture.Width / 2, _ownerSprite.Position.Y);
+            }
 
     }
 

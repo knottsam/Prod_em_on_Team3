@@ -40,45 +40,21 @@ namespace Prod_em_on_Team3
         public override void Update(GameTime gameTime, bool gameStarted, int rightEdge)
         {
 
+            keyboard = Keyboard.GetState();
 
 
 
-          
+            if (Keyboard.GetState().IsKeyDown(Keys.Space))
+            {
+                //left
+                Position = new Vector2(Position.X - 5, Position.Y);
+            }
 
-        }
 
-        public int Health
-        {
-            get { return health; }
-            set { health = value; }
 
-        }
-
-        public Vector2 Position
-        {
-            get { return position; }
-        }
-
-        public int Radius
-        {
-            get { return radius; }
-        }
-
-        public Enemy(Vector2 newPos)
-        {
-            position = newPos;
         }
 
         
-
-
-
-        public int Lives
-        {
-            get { return lives; }
-            set { lives = value; }
-
-        }
 
 
     }
