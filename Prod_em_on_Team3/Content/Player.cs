@@ -59,6 +59,11 @@ namespace Prod_em_on_Team3
                 //up
                 Position = new Vector2(Position.X, Position.Y - 5);
             }
+            if (Keyboard.GetState().IsKeyDown(Keys.I))
+            {
+                Position = new Vector2(Position.Y);
+            }
+
 
 
         }

@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using SharpDX.Direct2D1;
 
 namespace Prod_em_on_Team3.Content
 {
@@ -13,6 +14,9 @@ namespace Prod_em_on_Team3.Content
         private Sprite _ownerSprite;
         private bool _isDrawn;
         private bool bulletFired;
+        private bool bulletTarget;
+        private float _bulletDistance;
+        private Player Player;
 
         public Bullet() : base()
         {
@@ -42,22 +46,26 @@ namespace Prod_em_on_Team3.Content
             {
 
                 bulletFired = true;
+                bulletTarget = MouseState()
             }
-            if (Position.Y <= 0)
+            if (Position.Y <= 5)
             {
                 bulletFired = false;
                 ResetToOwner(Owner);
             }
             if (Position.Y > 0 && bulletFired)
             {
-                Position = new Vector2(Position.X, Position.Y - 1/*2*/);
+                Position = new Vector2(Position.X, Position.Y - 8);
             }
             if (Position.Y > 0 && !bulletFired)
             {
                 Position = new Vector2(
                     Owner.Position.X + (Owner.SpriteTexture.Width / 2 - SpriteTexture.Width / 2), Position.Y);
+               
             }
 
+            
+            
             base.Update(gameTime, gamestarted, rightedge);
         }
         public Sprite Owner

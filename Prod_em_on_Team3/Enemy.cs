@@ -20,6 +20,8 @@ namespace Prod_em_on_Team3
         protected int radius;
         private Player Player;
         KeyboardState keyboard, prevkeyboard;
+        private bool enemyfired;
+        private Sprite _ownerSprite;
 
 
         public Enemy() : base()
@@ -42,20 +44,44 @@ namespace Prod_em_on_Team3
 
             keyboard = Keyboard.GetState();
 
-
-
-            if (Keyboard.GetState().IsKeyDown(Keys.Space))
+            if (Keyboard.GetState().IsKeyDown(Keys.N))
             {
-                //left
-                Position = new Vector2(Position.X - 5, Position.Y);
+
+                enemyfired = true;
             }
+            if (Position.Y <= 0)
+            {
+                enemyfired = false;
+               
+            }
+            if (Position.Y > 0 && enemyfired)
+            {
+                Position = new Vector2(Position.X, Position.Y - 2);
+            }
+           
+
+
+            //if (Keyboard.GetState().IsKeyDown(Keys.Left))
+            //{
+            //    //left
+            //    Position = new Vector2(Position.X - 10, Position.Y);
+            //}
+            //else if (Keyboard.GetState().IsKeyDown(Keys.Right))
+            //{
+            //    //right
+            //    Position = new Vector2(Position.X + 10, Position.Y);
+            //}
 
 
 
         }
 
-        
 
+        public Sprite Owner
+        {
+            get { return _ownerSprite; }
+            set { _ownerSprite = value; }
+        }
 
     }
 }
