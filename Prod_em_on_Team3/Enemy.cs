@@ -18,7 +18,6 @@ namespace Prod_em_on_Team3
         protected int health;
         protected int speed;
         protected int radius;
-        private Player Player;
         KeyboardState keyboard, prevkeyboard;
         private bool enemyfired;
         private Sprite _ownerSprite;

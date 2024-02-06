@@ -4,6 +4,7 @@ using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using SharpDX.Direct2D1;
+using SharpDX.Direct3D11;
 
 namespace Prod_em_on_Team3.Content
 {
@@ -16,7 +17,9 @@ namespace Prod_em_on_Team3.Content
         private bool bulletFired;
         private bool bulletTarget;
         private float _bulletDistance;
-        private Player Player;
+        MouseState Playertarget;
+        private Player _player;
+
 
         public Bullet() : base()
         {
@@ -42,12 +45,21 @@ namespace Prod_em_on_Team3.Content
         // public void ResetToOwner(Sprite owner)
         public override void Update(GameTime gameTime, bool gamestarted, int rightedge)
         {
+            //Playertarget = new MouseState();
+            //if (lastMouseState.LeftButton == ButtonState.Released && currentMouseState.LeftButton == ButtonState.Pressed)
+            //{
+            //    // This will give the player a target to go to. 
+            //    bulletTarget.X = MouseState.X;
+            //}
+
+
+
             if (Keyboard.GetState().IsKeyDown(Keys.M))
             {
 
                 bulletFired = true;
-                bulletTarget = MouseState()
             }
+
             if (Position.Y <= 5)
             {
                 bulletFired = false;
@@ -55,13 +67,17 @@ namespace Prod_em_on_Team3.Content
             }
             if (Position.Y > 0 && bulletFired)
             {
-                Position = new Vector2(Position.X, Position.Y - 8);
+                Position = new Vector2(Position.X, Position.Y - 6);
             }
             if (Position.Y > 0 && !bulletFired)
             {
                 Position = new Vector2(
                     Owner.Position.X + (Owner.SpriteTexture.Width / 2 - SpriteTexture.Width / 2), Position.Y);
                
+            }
+            if (bulletFired)
+            {
+
             }
 
             
