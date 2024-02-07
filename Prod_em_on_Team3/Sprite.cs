@@ -33,7 +33,7 @@ namespace Prod_em_on_Team3
 
             _spriteTexture = contentManager.Load<Texture2D>(TextureName);
             if(_spriteTexture != null ) 
-                _spritePosition = new Vector2(_spritePosition.X - (_spriteTexture.Width / 2), _spritePosition.Y - _spriteTexture.Height);
+                //_spritePosition = new Vector2(_spritePosition.X - (_spriteTexture.Width / 2), _spritePosition.Y - _spriteTexture.Height);
 
             _Loaded = true;
 

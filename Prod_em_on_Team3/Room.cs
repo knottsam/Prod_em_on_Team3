@@ -15,11 +15,15 @@ namespace Prod_em_on_Team3
         public int Height;
         public int X;
         public int Y;
-        public bool visibility = false;
+
+        private bool visibility = false;
+        private bool playerInRoom = false;
+        private bool roomFound = false;
+
         public Rectangle hitbox;
         public List<Door> roomDoors;
         public Rectangle[,] tileMap;
-
+        public EnemyObj[] enemies;
 
         public Texture2D tempTexture;
 
@@ -76,6 +80,17 @@ namespace Prod_em_on_Team3
             set { hitbox = value; }
         }
 
+        public bool PlayerRoom
+        {
+            get { return playerInRoom; }
+            set { playerInRoom = value; }
+        }
+        public bool PreviouslyEntered
+        {
+            get { return roomFound; }
+            set { roomFound = value; }
+        }
+
         public Vector2 GetRoomCenter()
         {
             return new Vector2 (X*Width, Y*Height);
@@ -84,11 +99,6 @@ namespace Prod_em_on_Team3
         public void OnRoomReady()
         {
             tileMap = Tilemap.CreateTilemap(GetRoomCenter() + new Vector2(200, 200));
-        }
-
-        public void onCollisionTriggered()
-        {
-            RoomController.instance.OnPlayerEnter(this);
         }
     }
 }

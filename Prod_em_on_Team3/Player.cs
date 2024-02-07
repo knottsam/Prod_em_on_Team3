@@ -91,6 +91,9 @@ namespace Prod_em_on_Team3
 
 
             if (Keyboard.GetState().IsKeyDown(Keys.Down))
+            {
+
+            }
                 
 
 
@@ -126,20 +129,21 @@ namespace Prod_em_on_Team3
                 _animationBodyManager.Play(_bodyAnimations["WalkRight"]);
             else if (Keyboard.GetState().IsKeyDown(Keys.A))
                 _animationBodyManager.Play(_bodyAnimations["WalkLeft"]);
-            //else if (Keyboard.GetState().IsKeyDown(Keys.Up) || Keyboard.GetState().IsKeyDown(Keys.Down))
-            //_animationBodyManager.Play(_bodyAnimations["WalkVertical"]);
+                //else if (Keyboard.GetState().IsKeyDown(Keys.Up) || Keyboard.GetState().IsKeyDown(Keys.Down))
+                //_animationBodyManager.Play(_bodyAnimations["WalkVertical"]);
             else
             {
                 //_animationManager.Play(_bodyAnimations["WalkVertical"]);
                 _animationBodyManager.Stop(0);
             }
 
-            if (Keyboard.GetState().IsKeyDown(Keys.Down))
-                _animationHeadManager.Play(_HeadAnimations["Down"]);
-            //else if (Keyboard.GetState().IsKeyDown(Keys.Left))
-                //_animationBodyManager.Play(_bodyAnimations["WalkLeft"]);
-            //else if (Keyboard.GetState().IsKeyDown(Keys.Up) || Keyboard.GetState().IsKeyDown(Keys.Down))
-            //_animationBodyManager.Play(_bodyAnimations["WalkVertical"]);
+            if (Keyboard.GetState().IsKeyDown(Keys.Down)) { 
+            }
+                //_animationHeadManager.Play(_HeadAnimations["Down"]);
+                //else if (Keyboard.GetState().IsKeyDown(Keys.Left))
+                    //_animationBodyManager.Play(_bodyAnimations["WalkLeft"]);
+                //else if (Keyboard.GetState().IsKeyDown(Keys.Up) || Keyboard.GetState().IsKeyDown(Keys.Down))
+                //_animationBodyManager.Play(_bodyAnimations["WalkVertical"]);
             else
             {
                 //_animationManager.Play(_bodyAnimations["WalkVertical"]);

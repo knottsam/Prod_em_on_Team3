@@ -20,6 +20,7 @@ namespace Prod_em_on_Team3
         {
             _animation = animation;
             _animation.FrameSpeed = frameSpeed;
+            _timer = frameSpeed;
         }
 
         public void Draw(SpriteBatch spriteBatch)
@@ -51,7 +52,6 @@ namespace Prod_em_on_Team3
 
             _animation.CurrentFrame = frame;
         }
-
         public void Update(GameTime gameTime)
         {
             _timer += (float)gameTime.ElapsedGameTime.TotalSeconds;

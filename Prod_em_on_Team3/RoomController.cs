@@ -18,7 +18,6 @@ namespace Prod_em_on_Team3
         public int y;
         public Room room;
     }
-
     public class RoomController
     {
         private SpriteBatch _spriteBatch;
@@ -28,16 +27,13 @@ namespace Prod_em_on_Team3
 
         public static RoomController instance;
 
-        string currentFloorName = "Basement";
+        string currentFloorName = "Basement I";
 
         public RoomInfo currentLoadRoomData;
 
         public Room currentRoom;
 
-
         public List<Room> loadedRooms = new List<Room>();
-
-
         public void Started(ContentManager inContent, SpriteBatch inSpriteBatch, Camera2D inCam)
         {
             instance = this;
@@ -45,7 +41,6 @@ namespace Prod_em_on_Team3
             _spriteBatch = inSpriteBatch;
             _camera = inCam;
         }
-
         public void Update(GameTime gameTime)
         {
             _tweener.Update((float)gameTime.ElapsedGameTime.TotalSeconds);
@@ -56,11 +51,7 @@ namespace Prod_em_on_Team3
                     room.Visible = false;
                 }
             }
-
-
         }
- 
-
         public void LoadRoom(string roomName, int x, int y)
         {
 
@@ -79,7 +70,6 @@ namespace Prod_em_on_Team3
             LoadRoomRoutine(newRoomData);
             
         }
-
         public void LoadRoomRoutine(RoomInfo info)
         {
             string roomName = currentFloorName + info.name;
@@ -87,7 +77,6 @@ namespace Prod_em_on_Team3
             info.room.LoadContent(content, _spriteBatch, roomName);
 
         }
-
         public void RegisterRoom( Room room)
         {
             if(DoesRoomExist(currentLoadRoomData.x, currentLoadRoomData.y))
@@ -118,7 +107,6 @@ namespace Prod_em_on_Team3
             loadedRooms.Add(room);
 
         }
-
         public void OnRoomsLoaded()
         {
 
@@ -144,20 +132,22 @@ namespace Prod_em_on_Team3
             }
 
         }
-
         public bool DoesRoomExist( int x, int y )
         {
             return loadedRooms.Find(item => item.X == x && item.Y == y) != null;
         }
-
         public void OnPlayerEnter(Room inRoom)
         {
             foreach (Room room in loadedRooms)
             {
                 room.Visible = false;
+                room.PlayerRoom = false;
             }
 
             inRoom.Visible = true;
+            //inRoom.PreviouslyEntered = true;
+            inRoom.PlayerRoom = true;
+
             _tweener.TweenTo(target: _camera, expression: player => _camera.Position, toValue: inRoom.GetRoomCenter() + new Vector2(580, 380), duration: 0.3f, delay: 0)
                   .Easing(EasingFunctions.Linear);
 
