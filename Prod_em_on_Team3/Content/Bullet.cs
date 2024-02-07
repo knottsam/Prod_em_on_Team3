@@ -45,12 +45,6 @@ namespace Prod_em_on_Team3.Content
         // public void ResetToOwner(Sprite owner)
         public override void Update(GameTime gameTime, bool gamestarted, int rightedge)
         {
-            //Playertarget = new MouseState();
-            //if (lastMouseState.LeftButton == ButtonState.Released && currentMouseState.LeftButton == ButtonState.Pressed)
-            //{
-            //    // This will give the player a target to go to. 
-            //    bulletTarget.X = MouseState.X;
-            //}
 
 
 
@@ -75,11 +69,7 @@ namespace Prod_em_on_Team3.Content
                     Owner.Position.X + (Owner.SpriteTexture.Width / 2 - SpriteTexture.Width / 2), Position.Y);
                
             }
-            if (bulletFired)
-            {
-
-            }
-
+           
             
             
             base.Update(gameTime, gamestarted, rightedge);
