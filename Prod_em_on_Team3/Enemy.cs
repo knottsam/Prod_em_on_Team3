@@ -4,6 +4,7 @@ using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Prod_em_on_Team3;
+using Prod_em_on_Team3.Content;
 using System;
 using Keyboard = Microsoft.Xna.Framework.Input.Keyboard;
 
@@ -21,6 +22,8 @@ namespace Prod_em_on_Team3
         KeyboardState keyboard, prevkeyboard;
         private bool enemyfired;
         private Sprite _ownerSprite;
+        private Bullet bullet;
+        private Player player;
 
 
         public Enemy() : base()
@@ -56,6 +59,10 @@ namespace Prod_em_on_Team3
             if (Position.Y > 0 && enemyfired)
             {
                 Position = new Vector2(Position.X, Position.Y - 2);
+            }
+            if(keyboard.IsKeyDown(Keys.X))
+            {
+                bullet.Position = player.Position;
             }
            
 

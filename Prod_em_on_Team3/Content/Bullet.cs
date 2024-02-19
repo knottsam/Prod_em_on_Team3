@@ -17,9 +17,9 @@ namespace Prod_em_on_Team3.Content
         private bool bulletFired;
         private bool bulletTarget;
         private float _bulletDistance;
-        MouseState Playertarget;
+        MouseState bullettarget;
         private Player _player;
-
+        private float fireRate;
 
         public Bullet() : base()
         {
@@ -40,6 +40,10 @@ namespace Prod_em_on_Team3.Content
         {
             Position = new Vector2(ownerSprite.Position.X + ownerSprite.SpriteTexture.Width / 2 - SpriteTexture.Width / 2,
                 ownerSprite.Position.Y);
+        }
+        public void Targetbullet ()
+        {
+          
         }
 
         // public void ResetToOwner(Sprite owner)
@@ -69,6 +73,7 @@ namespace Prod_em_on_Team3.Content
                     Owner.Position.X + (Owner.SpriteTexture.Width / 2 - SpriteTexture.Width / 2), Position.Y);
                
             }
+           
            
             
             

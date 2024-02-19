@@ -28,7 +28,7 @@ namespace Prod_em_on_Team3
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
-            firstPlayer = new Player(new Vector2(_graphics.PreferredBackBufferWidth / 2, _graphics.PreferredBackBufferHeight / 2),
+            firstPlayer = new Player(new Vector2(_graphics.PreferredBackBufferWidth / 2, _graphics.PreferredBackBufferHeight / 6),
                 new Rectangle(), Color.White);
             firstEnemy = new Enemy(new Vector2(_graphics.PreferredBackBufferWidth / 5, _graphics.PreferredBackBufferHeight / 2),
                 new Rectangle(), Color.White);
@@ -47,7 +47,7 @@ namespace Prod_em_on_Team3
             firstBullet.LoadContent(Content, "round ball");
 
 
-           
+
             // TODO: use this.Content to load your game content here
         }
 
@@ -56,9 +56,9 @@ namespace Prod_em_on_Team3
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
             firstPlayer.Update(gameTime, true, _graphics.PreferredBackBufferWidth); //FIX THIS... other class issue
-            firstEnemy.Update(gameTime,true,_graphics.PreferredBackBufferWidth);
-            firstBullet.Update(gameTime,true,_graphics.PreferredBackBufferWidth);
-     
+            firstEnemy.Update(gameTime, true, _graphics.PreferredBackBufferWidth);
+            firstBullet.Update(gameTime, true, _graphics.PreferredBackBufferWidth);
+
 
             // TODO: Add your update logic here
 
@@ -78,7 +78,7 @@ namespace Prod_em_on_Team3
             // TODO: Add your drawing code here
 
             base.Draw(gameTime);
-        }
 
+        }
     }
 }
