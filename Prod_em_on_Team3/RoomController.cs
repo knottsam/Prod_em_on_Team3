@@ -27,7 +27,7 @@ namespace Prod_em_on_Team3
 
         public static RoomController instance;
 
-        string currentFloorName = "Basement I";
+        string currentFloorName = "Basement";
 
         public RoomInfo currentLoadRoomData;
 

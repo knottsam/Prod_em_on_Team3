@@ -73,11 +73,11 @@ namespace Prod_em_on_Team3
         public virtual void Draw(SpriteBatch spriteBatch)
         {
             if (_texture != null)
-                spriteBatch.Draw(_texture, _animationBodyManager.Position, new Rectangle((int)_position.X, (int)_position.Y, _texture.Width, _texture.Height), Color.White);
-            else if (_animationBodyManager != null)
+                spriteBatch.Draw(_texture, _bodyAnimationManager.Position, new Rectangle((int)_position.X, (int)_position.Y, _texture.Width, _texture.Height), Color.White);
+            else if (_bodyAnimationManager != null)
             {
-                _animationBodyManager.Draw(spriteBatch);
-                _animationHeadManager.Draw(spriteBatch);
+                _bodyAnimationManager.Draw(spriteBatch);
+                _bodyAnimationManager.Draw(spriteBatch);
             }
             else
                 return;
