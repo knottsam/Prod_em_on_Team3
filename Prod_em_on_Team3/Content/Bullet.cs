@@ -40,11 +40,12 @@ namespace Prod_em_on_Team3.Content
         {
             Position = new Vector2(ownerSprite.Position.X + ownerSprite.SpriteTexture.Width / 2 - SpriteTexture.Width / 2,
                 ownerSprite.Position.Y);
-        }
-        public void Targetbullet ()
-        {
           
         }
+        //public void Targetbullet ()
+        //{
+        //    bulletTarget =
+        //}
 
         // public void ResetToOwner(Sprite owner)
         public override void Update(GameTime gameTime, bool gamestarted, int rightedge)
@@ -56,6 +57,12 @@ namespace Prod_em_on_Team3.Content
             {
 
                 bulletFired = true;
+                // find the players position
+                // find the posiiton that the bullet is being shot from
+                // players position - bullet position is the distance from the target
+                // divide this distance by the number of frames that you want it to take to reach
+                // add this to the bullets position every frame (in update)
+                bulletTarget = (Vector2(_player.Position) - Owner.Position.X + (Owner.SpriteTexture.Width / 2 - SpriteTexture.Width / 2), Position.Y);
             }
 
             if (Position.Y <= 5)
@@ -65,7 +72,7 @@ namespace Prod_em_on_Team3.Content
             }
             if (Position.Y > 0 && bulletFired)
             {
-                Position = new Vector2(Position.X, Position.Y - 6);
+                Position = new Vector2(_player.Position.X, _player.Position.Y - 6);
             }
             if (Position.Y > 0 && !bulletFired)
             {
