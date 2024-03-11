@@ -22,8 +22,9 @@ namespace Prod_em_on_Team3
         }
 
 
+
         public Player(Vector2 spritePosition, Rectangle spriteBox, Color spriteColour)
-            : base(spritePosition, spriteBox, spriteColour)
+
         {
             _spriteBox = spriteBox;
             _spriteColour = spriteColour;
@@ -63,7 +64,6 @@ namespace Prod_em_on_Team3
             {
                 Position = new Vector2(Position.Y);
             }
-
 
 
         }

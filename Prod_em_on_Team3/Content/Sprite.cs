@@ -12,6 +12,11 @@ namespace Prod_em_on_Team3
         protected Vector2 _spritePosition;
         protected Rectangle _spriteBox;
         protected Color _spriteColour;
+        public Vector2 _SpritePosition
+        {
+            get { return _spritePosition; }
+            set { _spritePosition = value; }
+        }
  
         public Sprite()
         { }

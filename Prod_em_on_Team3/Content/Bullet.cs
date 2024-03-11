@@ -10,14 +10,15 @@ namespace Prod_em_on_Team3.Content
 {
     public class Bullet : Sprite
     {
-        Vector2 _bulletPosition;
+        Vector2 _playerposition;
+        Vector2 _enemyposition;
+        private Vector2 _bulletPosition;
         Rectangle _bulletBox;
         private Sprite _ownerSprite;
         private bool _isDrawn;
         private bool bulletFired;
-        private bool bulletTarget;
+        private Vector2 bulletTarget;
         private float _bulletDistance;
-        MouseState bullettarget;
         private Player _player;
         private float fireRate;
 
@@ -57,12 +58,10 @@ namespace Prod_em_on_Team3.Content
             {
 
                 bulletFired = true;
-                // find the players position
-                // find the posiiton that the bullet is being shot from
-                // players position - bullet position is the distance from the target
-                // divide this distance by the number of frames that you want it to take to reach
-                // add this to the bullets position every frame (in update)
-                bulletTarget = (Vector2(_player.Position) - Owner.Position.X + (Owner.SpriteTexture.Width / 2 - SpriteTexture.Width / 2), Position.Y);
+                //_playerposition = new Vector2(X, Position.Y - 5);
+                //_enemyposition = new Vector2( Owner.Position.X + (Owner.SpriteTexture.Width / 2 - SpriteTexture.Width / 2), Position.Y);
+
+                bulletTarget = _playerposition - _enemyposition;
             }
 
             if (Position.Y <= 5)
@@ -72,18 +71,18 @@ namespace Prod_em_on_Team3.Content
             }
             if (Position.Y > 0 && bulletFired)
             {
-                Position = new Vector2(_player.Position.X, _player.Position.Y - 6);
+                Position = new Vector2(Position.X,Position.Y - 6);
             }
             if (Position.Y > 0 && !bulletFired)
             {
                 Position = new Vector2(
                     Owner.Position.X + (Owner.SpriteTexture.Width / 2 - SpriteTexture.Width / 2), Position.Y);
-               
+
             }
-           
-           
-            
-            
+
+
+
+
             base.Update(gameTime, gamestarted, rightedge);
         }
         public Sprite Owner
@@ -93,13 +92,13 @@ namespace Prod_em_on_Team3.Content
         }
 
 
-            public void PositionBullet()
-            {
-                int halfway = _ownerSprite.SpriteTexture.Width / 2; 
-                int topOfSprite = _ownerSprite.SpriteTexture.Height;
+        //public void PositionBullet()
+        //{
+        //    int halfway = _ownerSprite.SpriteTexture.Width / 2;
+        //    int topOfSprite = _ownerSprite.SpriteTexture.Height;
 
-                Position = new Vector2(_ownerSprite.Position.X / 2 + SpriteTexture.Width / 2, _ownerSprite.Position.Y);
-            }
+        //    Position = new Vector2(_ownerSprite.Position.X / 2 + SpriteTexture.Width / 2, _ownerSprite.Position.Y);
+        //}
 
     }
 
