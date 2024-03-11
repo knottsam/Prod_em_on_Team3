@@ -1,0 +1,1370 @@
+﻿{
+  "rooms": {
+    "room": [
+      {
+        "_variant": "0",
+        "_name": "Start",
+        "_type": "1",
+        "_subtype": "0",
+        "_shape": "1",
+        "_width": "13",
+        "_height": "7",
+        "_difficulty": "1",
+        "_weight": "1.0"
+      },
+      {
+        "spawn": [
+          {
+            "entity": {
+              "_type": "Machine",
+              "_variant": "Donation",
+              "_subtype": "0",
+              "_weight": "1.0"
+            },
+            "_x": "3",
+            "_y": "0"
+          },
+          {
+            "entity": {
+              "_type": "Keeper",
+              "_variant": "Hanging",
+              "_subtype": "0",
+              "_weight": "1.0"
+            },
+            "_x": "1",
+            "_y": "1"
+          },
+          {
+            "entity": {
+              "_type": "Keeper",
+              "_variant": "",
+              "_subtype": "0",
+              "_weight": "1.0"
+            },
+            "_x": "6",
+            "_y": "1"
+          },
+          {
+            "entity": {
+              "_type": "Keeper",
+              "_variant": "Hanging",
+              "_subtype": "0",
+              "_weight": "1.0"
+            },
+            "_x": "11",
+            "_y": "1"
+          },
+          {
+            "entity": {
+              "_type": "Trinket",
+              "_variant": "NO!",
+              "_subtype": "",
+              "_weight": "1.0"
+            },
+            "_x": "4",
+            "_y": "3"
+          },
+          {
+            "entity": {
+              "_type": "Item",
+              "_variant": "Black Candle",
+              "_subtype": "",
+              "_weight": "1.0"
+            },
+            "_x": "6",
+            "_y": "3"
+          },
+          {
+            "entity": {
+              "_type": "5",
+              "_variant": "70",
+              "_subtype": "2",
+              "_weight": "1.0"
+            },
+            "_x": "8",
+            "_y": "3"
+          },
+          {
+            "entity": {
+              "_type": "5",
+              "_variant": "90",
+              "_subtype": "1",
+              "_weight": "1.0"
+            },
+            "_x": "3",
+            "_y": "5"
+          },
+          {
+            "entity": {
+              "_type": "5",
+              "_variant": "40",
+              "_subtype": "2",
+              "_weight": "1.0"
+            },
+            "_x": "6",
+            "_y": "5"
+          },
+          {
+            "entity": {
+              "_type": "5",
+              "_variant": "30",
+              "_subtype": "3",
+              "_weight": "1.0"
+            },
+            "_x": "9",
+            "_y": "5"
+          }
+        ],
+        "_variant": "1",
+        "_name": "Shop",
+        "_type": "2",
+        "_subtype": "0",
+        "_shape": "1",
+        "_width": "13",
+        "_height": "7",
+        "_difficulty": "1",
+        "_weight": "1.0"
+      },
+      {
+        "spawn": {
+          "entity": {
+            "_type": "5",
+            "_variant": "100",
+            "_subtype": "153",
+            "_weight": "1.0"
+          },
+          "_x": "6",
+          "_y": "3"
+        },
+        "_variant": "2",
+        "_name": "Treasure Room",
+        "_type": "4",
+        "_subtype": "0",
+        "_shape": "1",
+        "_width": "13",
+        "_height": "7",
+        "_difficulty": "1",
+        "_weight": "1.0"
+      },
+      {
+        "spawn": [
+          {
+            "entity": {
+              "_type": "Rock",
+              "_variant": "0",
+              "_subtype": "0",
+              "_weight": "1.0"
+            },
+            "_x": "1",
+            "_y": "1"
+          },
+          {
+            "entity": {
+              "_type": "Rock",
+              "_variant": "0",
+              "_subtype": "0",
+              "_weight": "1.0"
+            },
+            "_x": "2",
+            "_y": "1"
+          },
+          {
+            "entity": {
+              "_type": "Rock",
+              "_variant": "0",
+              "_subtype": "0",
+              "_weight": "1.0"
+            },
+            "_x": "3",
+            "_y": "2"
+          },
+          {
+            "entity": {
+              "_type": "Rock",
+              "_variant": "0",
+              "_subtype": "0",
+              "_weight": "1.0"
+            },
+            "_x": "7",
+            "_y": "2"
+          },
+          {
+            "entity": {
+              "_type": "Rock",
+              "_variant": "0",
+              "_subtype": "0",
+              "_weight": "1.0"
+            },
+            "_x": "8",
+            "_y": "2"
+          },
+          {
+            "entity": {
+              "_type": "Rock",
+              "_variant": "0",
+              "_subtype": "0",
+              "_weight": "1.0"
+            },
+            "_x": "2",
+            "_y": "3"
+          },
+          {
+            "entity": {
+              "_type": "5",
+              "_variant": "20",
+              "_subtype": "3",
+              "_weight": "1.0"
+            },
+            "_x": "3",
+            "_y": "3"
+          },
+          {
+            "entity": {
+              "_type": "Rock",
+              "_variant": "0",
+              "_subtype": "0",
+              "_weight": "1.0"
+            },
+            "_x": "4",
+            "_y": "3"
+          },
+          {
+            "entity": {
+              "_type": "5",
+              "_variant": "40",
+              "_subtype": "1",
+              "_weight": "1.0"
+            },
+            "_x": "5",
+            "_y": "3"
+          },
+          {
+            "entity": {
+              "_type": "Rock",
+              "_variant": "0",
+              "_subtype": "0",
+              "_weight": "1.0"
+            },
+            "_x": "6",
+            "_y": "3"
+          },
+          {
+            "entity": {
+              "_type": "Rock",
+              "_variant": "0",
+              "_subtype": "0",
+              "_weight": "1.0"
+            },
+            "_x": "7",
+            "_y": "3"
+          },
+          {
+            "entity": {
+              "_type": "Rock",
+              "_variant": "0",
+              "_subtype": "0",
+              "_weight": "1.0"
+            },
+            "_x": "9",
+            "_y": "3"
+          },
+          {
+            "entity": {
+              "_type": "Rock",
+              "_variant": "0",
+              "_subtype": "0",
+              "_weight": "1.0"
+            },
+            "_x": "2",
+            "_y": "4"
+          },
+          {
+            "entity": {
+              "_type": "5",
+              "_variant": "20",
+              "_subtype": "2",
+              "_weight": "1.0"
+            },
+            "_x": "3",
+            "_y": "4"
+          },
+          {
+            "entity": {
+              "_type": "Rock",
+              "_variant": "0",
+              "_subtype": "0",
+              "_weight": "1.0"
+            },
+            "_x": "4",
+            "_y": "4"
+          },
+          {
+            "entity": {
+              "_type": "Rock",
+              "_variant": "0",
+              "_subtype": "0",
+              "_weight": "1.0"
+            },
+            "_x": "5",
+            "_y": "4"
+          },
+          {
+            "entity": {
+              "_type": "Rock",
+              "_variant": "0",
+              "_subtype": "0",
+              "_weight": "1.0"
+            },
+            "_x": "6",
+            "_y": "4"
+          },
+          {
+            "entity": {
+              "_type": "Rock",
+              "_variant": "0",
+              "_subtype": "0",
+              "_weight": "1.0"
+            },
+            "_x": "9",
+            "_y": "4"
+          },
+          {
+            "entity": {
+              "_type": "Rock",
+              "_variant": "0",
+              "_subtype": "0",
+              "_weight": "1.0"
+            },
+            "_x": "10",
+            "_y": "4"
+          },
+          {
+            "entity": {
+              "_type": "Rock",
+              "_variant": "0",
+              "_subtype": "0",
+              "_weight": "1.0"
+            },
+            "_x": "3",
+            "_y": "5"
+          }
+        ],
+        "_variant": "8",
+        "_name": "Room",
+        "_type": "1",
+        "_subtype": "0",
+        "_shape": "1",
+        "_width": "13",
+        "_height": "7",
+        "_difficulty": "1",
+        "_weight": "1.0"
+      },
+      {
+        "spawn": [
+          {
+            "entity": {
+              "_type": "10",
+              "_variant": "1",
+              "_subtype": "0",
+              "_weight": "1.0"
+            },
+            "_x": "2",
+            "_y": "0"
+          },
+          {
+            "entity": {
+              "_type": "33",
+              "_variant": "0",
+              "_subtype": "0",
+              "_weight": "1.0"
+            },
+            "_x": "4",
+            "_y": "0"
+          },
+          {
+            "entity": {
+              "_type": "33",
+              "_variant": "0",
+              "_subtype": "0",
+              "_weight": "1.0"
+            },
+            "_x": "8",
+            "_y": "0"
+          },
+          {
+            "entity": {
+              "_type": "10",
+              "_variant": "1",
+              "_subtype": "0",
+              "_weight": "1.0"
+            },
+            "_x": "10",
+            "_y": "0"
+          },
+          {
+            "entity": {
+              "_type": "33",
+              "_variant": "0",
+              "_subtype": "0",
+              "_weight": "1.0"
+            },
+            "_x": "0",
+            "_y": "1"
+          },
+          {
+            "entity": {
+              "_type": "Rock",
+              "_variant": "0",
+              "_subtype": "0",
+              "_weight": "1.0"
+            },
+            "_x": "1",
+            "_y": "1"
+          },
+          {
+            "entity": {
+              "_type": "Rock",
+              "_variant": "0",
+              "_subtype": "0",
+              "_weight": "1.0"
+            },
+            "_x": "2",
+            "_y": "1"
+          },
+          {
+            "entity": {
+              "_type": "Rock",
+              "_variant": "0",
+              "_subtype": "0",
+              "_weight": "1.0"
+            },
+            "_x": "3",
+            "_y": "1"
+          },
+          {
+            "entity": {
+              "_type": "Rock",
+              "_variant": "0",
+              "_subtype": "0",
+              "_weight": "1.0"
+            },
+            "_x": "4",
+            "_y": "1"
+          },
+          {
+            "entity": {
+              "_type": "Rock",
+              "_variant": "0",
+              "_subtype": "0",
+              "_weight": "1.0"
+            },
+            "_x": "8",
+            "_y": "1"
+          },
+          {
+            "entity": {
+              "_type": "Rock",
+              "_variant": "0",
+              "_subtype": "0",
+              "_weight": "1.0"
+            },
+            "_x": "9",
+            "_y": "1"
+          },
+          {
+            "entity": {
+              "_type": "Rock",
+              "_variant": "0",
+              "_subtype": "0",
+              "_weight": "1.0"
+            },
+            "_x": "10",
+            "_y": "1"
+          },
+          {
+            "entity": {
+              "_type": "Rock",
+              "_variant": "0",
+              "_subtype": "0",
+              "_weight": "1.0"
+            },
+            "_x": "11",
+            "_y": "1"
+          },
+          {
+            "entity": {
+              "_type": "33",
+              "_variant": "0",
+              "_subtype": "0",
+              "_weight": "1.0"
+            },
+            "_x": "12",
+            "_y": "1"
+          },
+          {
+            "entity": {
+              "_type": "33",
+              "_variant": "0",
+              "_subtype": "0",
+              "_weight": "1.0"
+            },
+            "_x": "0",
+            "_y": "5"
+          },
+          {
+            "entity": {
+              "_type": "Rock",
+              "_variant": "0",
+              "_subtype": "0",
+              "_weight": "1.0"
+            },
+            "_x": "1",
+            "_y": "5"
+          },
+          {
+            "entity": {
+              "_type": "Rock",
+              "_variant": "0",
+              "_subtype": "0",
+              "_weight": "1.0"
+            },
+            "_x": "2",
+            "_y": "5"
+          },
+          {
+            "entity": {
+              "_type": "Rock",
+              "_variant": "0",
+              "_subtype": "0",
+              "_weight": "1.0"
+            },
+            "_x": "3",
+            "_y": "5"
+          },
+          {
+            "entity": {
+              "_type": "Rock",
+              "_variant": "0",
+              "_subtype": "0",
+              "_weight": "1.0"
+            },
+            "_x": "4",
+            "_y": "5"
+          },
+          {
+            "entity": {
+              "_type": "Rock",
+              "_variant": "0",
+              "_subtype": "0",
+              "_weight": "1.0"
+            },
+            "_x": "8",
+            "_y": "5"
+          },
+          {
+            "entity": {
+              "_type": "Rock",
+              "_variant": "0",
+              "_subtype": "0",
+              "_weight": "1.0"
+            },
+            "_x": "9",
+            "_y": "5"
+          },
+          {
+            "entity": {
+              "_type": "Rock",
+              "_variant": "0",
+              "_subtype": "0",
+              "_weight": "1.0"
+            },
+            "_x": "10",
+            "_y": "5"
+          },
+          {
+            "entity": {
+              "_type": "Rock",
+              "_variant": "0",
+              "_subtype": "0",
+              "_weight": "1.0"
+            },
+            "_x": "11",
+            "_y": "5"
+          },
+          {
+            "entity": {
+              "_type": "33",
+              "_variant": "0",
+              "_subtype": "0",
+              "_weight": "1.0"
+            },
+            "_x": "12",
+            "_y": "5"
+          },
+          {
+            "entity": {
+              "_type": "10",
+              "_variant": "1",
+              "_subtype": "0",
+              "_weight": "1.0"
+            },
+            "_x": "2",
+            "_y": "6"
+          },
+          {
+            "entity": {
+              "_type": "33",
+              "_variant": "0",
+              "_subtype": "0",
+              "_weight": "1.0"
+            },
+            "_x": "4",
+            "_y": "6"
+          },
+          {
+            "entity": {
+              "_type": "33",
+              "_variant": "0",
+              "_subtype": "0",
+              "_weight": "1.0"
+            },
+            "_x": "8",
+            "_y": "6"
+          },
+          {
+            "entity": {
+              "_type": "10",
+              "_variant": "1",
+              "_subtype": "0",
+              "_weight": "1.0"
+            },
+            "_x": "10",
+            "_y": "6"
+          }
+        ],
+        "_variant": "9",
+        "_name": "Room",
+        "_type": "1",
+        "_subtype": "1",
+        "_shape": "1",
+        "_width": "13",
+        "_height": "7",
+        "_difficulty": "5",
+        "_weight": "1.0"
+      },
+      {
+        "spawn": [
+          {
+            "entity": {
+              "_type": "Rock",
+              "_variant": "0",
+              "_subtype": "0",
+              "_weight": "1.0"
+            },
+            "_x": "0",
+            "_y": "0"
+          },
+          {
+            "entity": {
+              "_type": "Rock",
+              "_variant": "0",
+              "_subtype": "0",
+              "_weight": "1.0"
+            },
+            "_x": "1",
+            "_y": "0"
+          },
+          {
+            "entity": {
+              "_type": "Rock",
+              "_variant": "0",
+              "_subtype": "0",
+              "_weight": "1.0"
+            },
+            "_x": "2",
+            "_y": "0"
+          },
+          {
+            "entity": {
+              "_type": "Rock",
+              "_variant": "0",
+              "_subtype": "0",
+              "_weight": "1.0"
+            },
+            "_x": "3",
+            "_y": "0"
+          },
+          {
+            "entity": {
+              "_type": "1900",
+              "_variant": "0",
+              "_subtype": "0",
+              "_weight": "1.0"
+            },
+            "_x": "4",
+            "_y": "0"
+          },
+          {
+            "entity": {
+              "_type": "1900",
+              "_variant": "0",
+              "_subtype": "0",
+              "_weight": "1.0"
+            },
+            "_x": "8",
+            "_y": "0"
+          },
+          {
+            "entity": {
+              "_type": "Rock",
+              "_variant": "0",
+              "_subtype": "0",
+              "_weight": "1.0"
+            },
+            "_x": "9",
+            "_y": "0"
+          },
+          {
+            "entity": {
+              "_type": "Rock",
+              "_variant": "0",
+              "_subtype": "0",
+              "_weight": "1.0"
+            },
+            "_x": "10",
+            "_y": "0"
+          },
+          {
+            "entity": {
+              "_type": "Rock",
+              "_variant": "0",
+              "_subtype": "0",
+              "_weight": "1.0"
+            },
+            "_x": "11",
+            "_y": "0"
+          },
+          {
+            "entity": {
+              "_type": "Rock",
+              "_variant": "0",
+              "_subtype": "0",
+              "_weight": "1.0"
+            },
+            "_x": "12",
+            "_y": "0"
+          },
+          {
+            "entity": {
+              "_type": "Rock",
+              "_variant": "0",
+              "_subtype": "0",
+              "_weight": "1.0"
+            },
+            "_x": "0",
+            "_y": "1"
+          },
+          {
+            "entity": {
+              "_type": "Rock",
+              "_variant": "0",
+              "_subtype": "0",
+              "_weight": "1.0"
+            },
+            "_x": "1",
+            "_y": "1"
+          },
+          {
+            "entity": {
+              "_type": "1001",
+              "_variant": "0",
+              "_subtype": "0",
+              "_weight": "1.0"
+            },
+            "_x": "2",
+            "_y": "1"
+          },
+          {
+            "entity": {
+              "_type": "Rock",
+              "_variant": "0",
+              "_subtype": "0",
+              "_weight": "1.0"
+            },
+            "_x": "3",
+            "_y": "1"
+          },
+          {
+            "entity": {
+              "_type": "1410",
+              "_variant": "0",
+              "_subtype": "0",
+              "_weight": "1.0"
+            },
+            "_x": "4",
+            "_y": "1"
+          },
+          {
+            "entity": {
+              "_type": "1410",
+              "_variant": "0",
+              "_subtype": "0",
+              "_weight": "1.0"
+            },
+            "_x": "8",
+            "_y": "1"
+          },
+          {
+            "entity": {
+              "_type": "Rock",
+              "_variant": "0",
+              "_subtype": "0",
+              "_weight": "1.0"
+            },
+            "_x": "9",
+            "_y": "1"
+          },
+          {
+            "entity": {
+              "_type": "1001",
+              "_variant": "0",
+              "_subtype": "0",
+              "_weight": "1.0"
+            },
+            "_x": "10",
+            "_y": "1"
+          },
+          {
+            "entity": {
+              "_type": "Rock",
+              "_variant": "0",
+              "_subtype": "0",
+              "_weight": "1.0"
+            },
+            "_x": "11",
+            "_y": "1"
+          },
+          {
+            "entity": {
+              "_type": "Rock",
+              "_variant": "0",
+              "_subtype": "0",
+              "_weight": "1.0"
+            },
+            "_x": "12",
+            "_y": "1"
+          },
+          {
+            "entity": {
+              "_type": "Rock",
+              "_variant": "0",
+              "_subtype": "0",
+              "_weight": "1.0"
+            },
+            "_x": "0",
+            "_y": "2"
+          },
+          {
+            "entity": {
+              "_type": "1002",
+              "_variant": "0",
+              "_subtype": "0",
+              "_weight": "1.0"
+            },
+            "_x": "1",
+            "_y": "2"
+          },
+          {
+            "entity": {
+              "_type": "Rock",
+              "_variant": "0",
+              "_subtype": "0",
+              "_weight": "1.0"
+            },
+            "_x": "2",
+            "_y": "2"
+          },
+          {
+            "entity": {
+              "_type": "Rock",
+              "_variant": "0",
+              "_subtype": "0",
+              "_weight": "1.0"
+            },
+            "_x": "3",
+            "_y": "2"
+          },
+          {
+            "entity": {
+              "_type": "1900",
+              "_variant": "0",
+              "_subtype": "0",
+              "_weight": "1.0"
+            },
+            "_x": "4",
+            "_y": "2"
+          },
+          {
+            "entity": {
+              "_type": "1900",
+              "_variant": "0",
+              "_subtype": "0",
+              "_weight": "1.0"
+            },
+            "_x": "8",
+            "_y": "2"
+          },
+          {
+            "entity": {
+              "_type": "Rock",
+              "_variant": "0",
+              "_subtype": "0",
+              "_weight": "1.0"
+            },
+            "_x": "9",
+            "_y": "2"
+          },
+          {
+            "entity": {
+              "_type": "Rock",
+              "_variant": "0",
+              "_subtype": "0",
+              "_weight": "1.0"
+            },
+            "_x": "10",
+            "_y": "2"
+          },
+          {
+            "entity": {
+              "_type": "1002",
+              "_variant": "0",
+              "_subtype": "0",
+              "_weight": "1.0"
+            },
+            "_x": "11",
+            "_y": "2"
+          },
+          {
+            "entity": {
+              "_type": "Rock",
+              "_variant": "0",
+              "_subtype": "0",
+              "_weight": "1.0"
+            },
+            "_x": "12",
+            "_y": "2"
+          },
+          {
+            "entity": {
+              "_type": "Rock",
+              "_variant": "0",
+              "_subtype": "0",
+              "_weight": "1.0"
+            },
+            "_x": "0",
+            "_y": "3"
+          },
+          {
+            "entity": {
+              "_type": "1011",
+              "_variant": "0",
+              "_subtype": "0",
+              "_weight": "1.0"
+            },
+            "_x": "1",
+            "_y": "3"
+          },
+          {
+            "entity": {
+              "_type": "1001",
+              "_variant": "0",
+              "_subtype": "0",
+              "_weight": "1.0"
+            },
+            "_x": "2",
+            "_y": "3"
+          },
+          {
+            "entity": {
+              "_type": "Rock",
+              "_variant": "0",
+              "_subtype": "0",
+              "_weight": "1.0"
+            },
+            "_x": "3",
+            "_y": "3"
+          },
+          {
+            "entity": {
+              "_type": "1410",
+              "_variant": "0",
+              "_subtype": "0",
+              "_weight": "1.0"
+            },
+            "_x": "4",
+            "_y": "3"
+          },
+          {
+            "entity": {
+              "_type": "1410",
+              "_variant": "0",
+              "_subtype": "0",
+              "_weight": "1.0"
+            },
+            "_x": "8",
+            "_y": "3"
+          },
+          {
+            "entity": {
+              "_type": "Rock",
+              "_variant": "0",
+              "_subtype": "0",
+              "_weight": "1.0"
+            },
+            "_x": "9",
+            "_y": "3"
+          },
+          {
+            "entity": {
+              "_type": "1001",
+              "_variant": "0",
+              "_subtype": "0",
+              "_weight": "1.0"
+            },
+            "_x": "10",
+            "_y": "3"
+          },
+          {
+            "entity": {
+              "_type": "1011",
+              "_variant": "0",
+              "_subtype": "0",
+              "_weight": "1.0"
+            },
+            "_x": "11",
+            "_y": "3"
+          },
+          {
+            "entity": {
+              "_type": "Rock",
+              "_variant": "0",
+              "_subtype": "0",
+              "_weight": "1.0"
+            },
+            "_x": "12",
+            "_y": "3"
+          },
+          {
+            "entity": {
+              "_type": "Rock",
+              "_variant": "0",
+              "_subtype": "0",
+              "_weight": "1.0"
+            },
+            "_x": "0",
+            "_y": "4"
+          },
+          {
+            "entity": {
+              "_type": "1002",
+              "_variant": "0",
+              "_subtype": "0",
+              "_weight": "1.0"
+            },
+            "_x": "1",
+            "_y": "4"
+          },
+          {
+            "entity": {
+              "_type": "Rock",
+              "_variant": "0",
+              "_subtype": "0",
+              "_weight": "1.0"
+            },
+            "_x": "2",
+            "_y": "4"
+          },
+          {
+            "entity": {
+              "_type": "Rock",
+              "_variant": "0",
+              "_subtype": "0",
+              "_weight": "1.0"
+            },
+            "_x": "3",
+            "_y": "4"
+          },
+          {
+            "entity": {
+              "_type": "1900",
+              "_variant": "0",
+              "_subtype": "0",
+              "_weight": "1.0"
+            },
+            "_x": "4",
+            "_y": "4"
+          },
+          {
+            "entity": {
+              "_type": "1900",
+              "_variant": "0",
+              "_subtype": "0",
+              "_weight": "1.0"
+            },
+            "_x": "8",
+            "_y": "4"
+          },
+          {
+            "entity": {
+              "_type": "Rock",
+              "_variant": "0",
+              "_subtype": "0",
+              "_weight": "1.0"
+            },
+            "_x": "9",
+            "_y": "4"
+          },
+          {
+            "entity": {
+              "_type": "Rock",
+              "_variant": "0",
+              "_subtype": "0",
+              "_weight": "1.0"
+            },
+            "_x": "10",
+            "_y": "4"
+          },
+          {
+            "entity": {
+              "_type": "1002",
+              "_variant": "0",
+              "_subtype": "0",
+              "_weight": "1.0"
+            },
+            "_x": "11",
+            "_y": "4"
+          },
+          {
+            "entity": {
+              "_type": "Rock",
+              "_variant": "0",
+              "_subtype": "0",
+              "_weight": "1.0"
+            },
+            "_x": "12",
+            "_y": "4"
+          },
+          {
+            "entity": {
+              "_type": "Rock",
+              "_variant": "0",
+              "_subtype": "0",
+              "_weight": "1.0"
+            },
+            "_x": "0",
+            "_y": "5"
+          },
+          {
+            "entity": {
+              "_type": "Rock",
+              "_variant": "0",
+              "_subtype": "0",
+              "_weight": "1.0"
+            },
+            "_x": "1",
+            "_y": "5"
+          },
+          {
+            "entity": {
+              "_type": "1001",
+              "_variant": "0",
+              "_subtype": "0",
+              "_weight": "1.0"
+            },
+            "_x": "2",
+            "_y": "5"
+          },
+          {
+            "entity": {
+              "_type": "Rock",
+              "_variant": "0",
+              "_subtype": "0",
+              "_weight": "1.0"
+            },
+            "_x": "3",
+            "_y": "5"
+          },
+          {
+            "entity": {
+              "_type": "1410",
+              "_variant": "0",
+              "_subtype": "0",
+              "_weight": "1.0"
+            },
+            "_x": "4",
+            "_y": "5"
+          },
+          {
+            "entity": {
+              "_type": "1410",
+              "_variant": "0",
+              "_subtype": "0",
+              "_weight": "1.0"
+            },
+            "_x": "8",
+            "_y": "5"
+          },
+          {
+            "entity": {
+              "_type": "Rock",
+              "_variant": "0",
+              "_subtype": "0",
+              "_weight": "1.0"
+            },
+            "_x": "9",
+            "_y": "5"
+          },
+          {
+            "entity": {
+              "_type": "1001",
+              "_variant": "0",
+              "_subtype": "0",
+              "_weight": "1.0"
+            },
+            "_x": "10",
+            "_y": "5"
+          },
+          {
+            "entity": {
+              "_type": "Rock",
+              "_variant": "0",
+              "_subtype": "0",
+              "_weight": "1.0"
+            },
+            "_x": "11",
+            "_y": "5"
+          },
+          {
+            "entity": {
+              "_type": "Rock",
+              "_variant": "0",
+              "_subtype": "0",
+              "_weight": "1.0"
+            },
+            "_x": "12",
+            "_y": "5"
+          },
+          {
+            "entity": {
+              "_type": "Rock",
+              "_variant": "0",
+              "_subtype": "0",
+              "_weight": "1.0"
+            },
+            "_x": "0",
+            "_y": "6"
+          },
+          {
+            "entity": {
+              "_type": "Rock",
+              "_variant": "0",
+              "_subtype": "0",
+              "_weight": "1.0"
+            },
+            "_x": "1",
+            "_y": "6"
+          },
+          {
+            "entity": {
+              "_type": "Rock",
+              "_variant": "0",
+              "_subtype": "0",
+              "_weight": "1.0"
+            },
+            "_x": "2",
+            "_y": "6"
+          },
+          {
+            "entity": {
+              "_type": "Rock",
+              "_variant": "0",
+              "_subtype": "0",
+              "_weight": "1.0"
+            },
+            "_x": "3",
+            "_y": "6"
+          },
+          {
+            "entity": {
+              "_type": "1900",
+              "_variant": "0",
+              "_subtype": "0",
+              "_weight": "1.0"
+            },
+            "_x": "4",
+            "_y": "6"
+          },
+          {
+            "entity": {
+              "_type": "1900",
+              "_variant": "0",
+              "_subtype": "0",
+              "_weight": "1.0"
+            },
+            "_x": "8",
+            "_y": "6"
+          },
+          {
+            "entity": {
+              "_type": "Rock",
+              "_variant": "0",
+              "_subtype": "0",
+              "_weight": "1.0"
+            },
+            "_x": "9",
+            "_y": "6"
+          },
+          {
+            "entity": {
+              "_type": "Rock",
+              "_variant": "0",
+              "_subtype": "0",
+              "_weight": "1.0"
+            },
+            "_x": "10",
+            "_y": "6"
+          },
+          {
+            "entity": {
+              "_type": "Rock",
+              "_variant": "0",
+              "_subtype": "0",
+              "_weight": "1.0"
+            },
+            "_x": "11",
+            "_y": "6"
+          },
+          {
+            "entity": {
+              "_type": "Rock",
+              "_variant": "0",
+              "_subtype": "0",
+              "_weight": "1.0"
+            },
+            "_x": "12",
+            "_y": "6"
+          }
+        ],
+        "_variant": "10",
+        "_name": "Room",
+        "_type": "1",
+        "_subtype": "0",
+        "_shape": "1",
+        "_width": "13",
+        "_height": "7",
+        "_difficulty": "1",
+        "_weight": "1.0"
+      }
+    ]
+  }
+}

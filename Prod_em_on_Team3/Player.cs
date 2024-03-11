@@ -17,11 +17,13 @@ namespace Prod_em_on_Team3
         protected AnimationManager _animationHeadManager;
         protected Dictionary<string, Animation> _HeadAnimations;
         protected Vector2 _position = new Vector2(1864 / 2, 1240 / 2);
-        protected Texture2D _texture;
+        protected Texture2D _bulletTexture;
         protected Rectangle _hitBox;
         protected Sprite hBoxSprite;
         protected float statusCheck;
-        protected float shotDebounce;
+
+        protected float cooldownCheck = 0;
+        protected List<Bullet> existingBullets = new List<Bullet>();
 
         //Stats
         private int Health = 6; //20 max
@@ -112,9 +114,10 @@ namespace Prod_em_on_Team3
 
         public virtual void Draw(SpriteBatch spriteBatch)
         {
-            if (_texture != null)
-                spriteBatch.Draw(_texture, _animationBodyManager.Position, new Rectangle((int)_position.X, (int)_position.Y, _texture.Width, _texture.Height), Color.White);
-            else if (_animationBodyManager != null)
+            //if (_texture != null)
+            //    spriteBatch.Draw(_texture, _animationBodyManager.Position, new Rectangle((int)_position.X, (int)_position.Y, _texture.Width, _texture.Height), Color.White);
+            //else 
+            if (_animationBodyManager != null)
             {
                 _animationBodyManager.Draw(spriteBatch);
                 _animationHeadManager.Draw(spriteBatch);
