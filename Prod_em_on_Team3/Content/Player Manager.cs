@@ -12,6 +12,8 @@ namespace Prod_em_on_Team3.Content
 {
     static class Player_Manager
     {
+        static Player firstplayer;
+        static GraphicsDeviceManager _graphics;
 
         static void Update(GameTime gameTime, bool gameStarted, int rightEdge)
         {
@@ -21,7 +23,7 @@ namespace Prod_em_on_Team3.Content
 
         static void CreatePlayer()
         {
-           
+            firstplayer = new Player(new Vector2(_graphics.PreferredBackBufferWidth / 2, _graphics.PreferredBackBufferHeight / 6), new Rectangle());
         }
 
         // static void CreatePlayer()

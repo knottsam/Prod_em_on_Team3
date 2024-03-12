@@ -15,6 +15,10 @@ namespace Prod_em_on_Team3
         private int spriteXvalue;
         KeyboardState keyboard, prevkeyboard;
         int gameState;
+        private Vector2 vector2;
+        private System.Drawing.Rectangle rectangle;
+        private System.Drawing.Color color;
+        private object green;
 
         public Player() : base()
         {
@@ -31,6 +35,14 @@ namespace Prod_em_on_Team3
             _spritePosition = Position;
 
 
+        }
+
+        public Player(Vector2 vector2, System.Drawing.Rectangle rectangle, System.Drawing.Color color, object green)
+        {
+            this.vector2 = vector2;
+            this.rectangle = rectangle;
+            this.color = color;
+            this.green = green;
         }
 
         public override void Update(GameTime gameTime, bool gameStarted, int rightEdge)
