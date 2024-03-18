@@ -34,7 +34,7 @@ namespace Prod_em_on_Team3
             _roomController = new RoomController();
             _enemyController = new EnemyController();
             _camera = new Camera2D(_resolutionIndependentRenderer);
-            _camera.Zoom = 1.05f; //1.05f
+            _camera.Zoom = 1.05f; //1.05f yes
             base.Initialize();
         }
 
