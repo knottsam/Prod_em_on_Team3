@@ -19,27 +19,33 @@ namespace Prod_em_on_Team3
         protected Vector2 _position = new Vector2(1864 / 2, 1240 / 2);
         protected Texture2D _texture;
         protected Rectangle _hitBox;
-        protected Sprite hBoxSprite;
         protected float statusCheck;
-        protected float shotDebounce;
+        protected ContentManager _content;
 
         //Stats
         private int Health = 6; //20 max
         private double Damage = 3;
-        private double BulletSpeed = 1;
-        private float shotsPerSec = 2.5f;
+        private float BulletSpeed = 1f;
+        private float shotsPerSec = 2.73f;
         private float moveSpeed = 1f;
         private int gold = 0;
         private int bombs = 1;
         private int keys = 0;
         private bool combat = false;
+        private float bulletSize = 1f;
         //Stats
+
+        private Vector2 playerVelocity;
+        //
+        private float cooldownCheck = 0;
+        private List<Bullet> existingBullets = new List<Bullet>();
 
         public static Player instance;
 
-        public new void LoadContent(ContentManager Content)
+        public void LoadContent(ContentManager Content)
         {
-
+            instance = this;
+            _content = Content;
             _hitBox = new Rectangle(0,0, 224, 100);
             _HeadAnimations = new Dictionary<string, Animation>()
             {
@@ -53,7 +59,7 @@ namespace Prod_em_on_Team3
                 { "WalkLeft", new Animation(Content.Load<Texture2D>("Left"), 9) },
             };
 
-            _animationHeadManager = new AnimationManager(_HeadAnimations.First().Value, 1/shotsPerSec);
+            _animationHeadManager = new AnimationManager(_HeadAnimations.First().Value, 0.6f/shotsPerSec);
             _animationBodyManager = new AnimationManager(_bodyAnimations.First().Value, moveSpeed/12);
         }
 
@@ -65,12 +71,12 @@ namespace Prod_em_on_Team3
 
             statusCheck += gameTime.ElapsedGameTime.Milliseconds;
 
-            foreach(Door door in currentRoom.roomDoors)
+            foreach (Door door in currentRoom.roomDoors)
             {
                 if (_hitBox.Intersects(door.BoundingBox) && !door.Closed)
                 {
                     canCollide = true;
-                    if(statusCheck > 500)
+                    if (statusCheck > 500)
                     {
                         statusCheck = 0;
                         _position = door.Enter();
@@ -78,49 +84,104 @@ namespace Prod_em_on_Team3
                 }
             }
 
-            int multi = 5;
+            playerVelocity = new Vector2(0, 0);
 
-            if (Keyboard.GetState().IsKeyDown(Keys.W) && (canCollide || (_position.Y - moveSpeed*5) > currentRoom.Hitbox.Location.Y)) //-160
-                _position.Y -= moveSpeed * multi;
+            if (Keyboard.GetState().IsKeyDown(Keys.W) && (canCollide || (_position.Y - moveSpeed * 5) > currentRoom.Hitbox.Location.Y)) //-160
+            {
+                playerVelocity += new Vector2(0,-1) * 5;
+                _position.Y -= moveSpeed * 5;
+            }
             if (Keyboard.GetState().IsKeyDown(Keys.A) && (canCollide || (_position.X - moveSpeed * 5) > currentRoom.Hitbox.Location.X))//-200
-                _position.X -= moveSpeed * multi;
+            {
+                playerVelocity += new Vector2(-1,0) * 5;
+                _position.X -= moveSpeed * 5;
+            }
             if (Keyboard.GetState().IsKeyDown(Keys.S) && (canCollide || (_position.Y + moveSpeed * 5) < currentRoom.Hitbox.Location.Y + currentRoom.Hitbox.Size.Y))//+270
-                _position.Y += moveSpeed * multi;
+            {
+                playerVelocity += new Vector2(0,1) * 5;
+                _position.Y += moveSpeed * 5;
+            }
             if (Keyboard.GetState().IsKeyDown(Keys.D) && (canCollide || (_position.X + moveSpeed * 5) < currentRoom.Hitbox.Location.X + currentRoom.Hitbox.Size.X))//+270
-                _position.X += moveSpeed * multi;
+            {
+                playerVelocity += new Vector2(1,0) * 5;
+                _position.X += moveSpeed * 5;
+            }
 
-
+            cooldownCheck += gameTime.ElapsedGameTime.Milliseconds;
+            if (Keyboard.GetState().IsKeyDown(Keys.Left))
+            {
+                FireBullet(new Vector2(-1, 0), gameTime);
+            }
+            if (Keyboard.GetState().IsKeyDown(Keys.Right))
+            {
+                FireBullet(new Vector2(1, 0), gameTime);
+            }
+            if (Keyboard.GetState().IsKeyDown(Keys.Up))
+            {
+                FireBullet(new Vector2(0, -1), gameTime);
+            }
             if (Keyboard.GetState().IsKeyDown(Keys.Down))
             {
-
+                FireBullet(new Vector2(0, 1), gameTime);
             }
-                
+
 
 
             SetAnimations();
 
             _animationBodyManager.Position = _position;
 
-            _animationHeadManager.Position = _position + new Vector2(-18,-87);
+            _animationHeadManager.Position = _animationBodyManager.Position + new Vector2(-18,-87);
 
             _hitBox = new Rectangle((int)_position.X, (int)_position.Y, 50,100);
+
+            for (int i = 0; i < existingBullets.Count; i++)
+            {
+                existingBullets[i].Update(gameTime);
+                if (existingBullets[i].Sprite.Position.X < (currentRoom.X * currentRoom.Width) || existingBullets[i].Sprite.Position.X > (currentRoom.X * currentRoom.Width) + currentRoom.Width ||
+                    existingBullets[i].Sprite.Position.Y < (currentRoom.Y * currentRoom.Height) || existingBullets[i].Sprite.Position.Y > (currentRoom.Y * currentRoom.Height) + currentRoom.Height || existingBullets[i].IsFinished)
+                {
+                    existingBullets.Remove(existingBullets[i]);
+                }
+            }
 
             _animationBodyManager.Update(gameTime);
             _animationHeadManager.Update(gameTime);
         }
 
+        public void FireBullet(Vector2 Direction, GameTime gameTime)
+        {
+            if (cooldownCheck >= (1 / shotsPerSec) * 1000)
+            {
+                cooldownCheck = 0;
+                Direction *= (BulletSpeed*10);
+                if (!(playerVelocity.Y > 0 && Direction.Y < 0) && !(playerVelocity.Y < 0 && Direction.Y > 0))
+                {
+                    Direction.Y += playerVelocity.Y/2;
+                }
+                if (!(playerVelocity.X > 0 && Direction.X < 0) && !(playerVelocity.X < 0 && Direction.X > 0))
+                {
+                    Direction.X += playerVelocity.X/2;
+                }
+                Bullet tempBullet = new Bullet(_content, _position, Direction, bulletSize);
+                existingBullets.Add(tempBullet);
+
+            }
+        }
 
         public virtual void Draw(SpriteBatch spriteBatch)
         {
-            if (_texture != null)
-                spriteBatch.Draw(_texture, _animationBodyManager.Position, new Rectangle((int)_position.X, (int)_position.Y, _texture.Width, _texture.Height), Color.White);
-            else if (_animationBodyManager != null)
+            if (_animationBodyManager != null)
             {
                 _animationBodyManager.Draw(spriteBatch);
                 _animationHeadManager.Draw(spriteBatch);
             }
             else
                 return;
+
+            foreach (Bullet bullet in existingBullets)
+                if (bullet.Firing)
+                    bullet.Sprite.Draw(spriteBatch);
         }
 
         protected virtual void SetAnimations()
@@ -137,7 +198,9 @@ namespace Prod_em_on_Team3
                 _animationBodyManager.Stop(0);
             }
 
-            if (Keyboard.GetState().IsKeyDown(Keys.Down)) { 
+            if (Keyboard.GetState().IsKeyDown(Keys.Down)) 
+            { 
+
             }
                 //_animationHeadManager.Play(_HeadAnimations["Down"]);
                 //else if (Keyboard.GetState().IsKeyDown(Keys.Left))
@@ -175,7 +238,7 @@ namespace Prod_em_on_Team3
             set { shotsPerSec = value; }
         }
 
-        public double ShotSpeed
+        public float ShotSpeed
         {
             get { return BulletSpeed; }
             set { BulletSpeed = value; }

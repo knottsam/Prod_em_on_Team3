@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
 using Prod_em_on_Team3.ProceduralGeneration;
+using Prod_em_on_Team3.EnemySystem;
 
 namespace Prod_em_on_Team3
 {
@@ -11,6 +12,7 @@ namespace Prod_em_on_Team3
         private SpriteBatch _spriteBatch;
         private List<EnemyObj> EnemyTypes;
         private RoomController _roomController;
+        private EnemyController _enemyController;
         private Player _player;
         private Camera2D _camera;
         private ResolutionIndependentRenderer _resolutionIndependentRenderer;
@@ -30,9 +32,9 @@ namespace Prod_em_on_Team3
         {
             _player = new Player();
             _roomController = new RoomController();
+            _enemyController = new EnemyController();
             _camera = new Camera2D(_resolutionIndependentRenderer);
             _camera.Zoom = 1.05f; //1.05f
-
             base.Initialize();
         }
 
@@ -44,6 +46,8 @@ namespace Prod_em_on_Team3
 
             _roomController.Started(Content,_spriteBatch, _camera);
             _player.LoadContent(Content);
+            _enemyController.LoadContent();
+
             DungeonGenerator generation = new DungeonGenerator();
             generation.Start();
 
@@ -64,6 +68,7 @@ namespace Prod_em_on_Team3
             }
 
             _roomController.Update(gameTime);
+            _enemyController.Update(gameTime);
             base.Update(gameTime);
         }
 
@@ -78,15 +83,15 @@ namespace Prod_em_on_Team3
             {
                 if (room.Visible)
                 {
-                    room.Draw(gameTime, _spriteBatch);
+                    room.Draw(_spriteBatch);
                     foreach (Door door in room.roomDoors)
                     {
                         door.Draw(_spriteBatch);
                     }
                 }
             }
+            _enemyController.Draw(_spriteBatch);
             _player.Draw(_spriteBatch);
-
             _spriteBatch.End();
 
             base.Draw(gameTime);

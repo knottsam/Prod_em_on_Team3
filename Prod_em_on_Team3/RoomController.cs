@@ -7,7 +7,8 @@ using Microsoft.Xna.Framework.Content;
 using System.Diagnostics;
 using MonoGame.Extended.Tweening;
 using MonoGame.Extended.Timers;
-
+using System.Linq;
+using Prod_em_on_Team3.EnemySystem;
 
 namespace Prod_em_on_Team3
 {
@@ -109,8 +110,8 @@ namespace Prod_em_on_Team3
         }
         public void OnRoomsLoaded()
         {
-
-            foreach(Room room in loadedRooms)
+            SpawnBossRoom();
+            foreach (Room room in loadedRooms)
             {
                 if (DoesRoomExist(room.X + 1, room.Y))
                 {
@@ -128,9 +129,16 @@ namespace Prod_em_on_Team3
                 {
                     room.AddDoor("Top", room.GetRoomCenter() + new Vector2(825, 80), content);
                 }
-                room.OnRoomReady();
             }
-
+        }
+        public void SpawnBossRoom()
+        {
+            Room bossRoom = loadedRooms[loadedRooms.Count - 1];
+            Room tempRoom = new Room(1864, 1240, bossRoom.X, bossRoom.Y);
+            bossRoom.Dispose();
+            var roomToRemove = loadedRooms.Single(r => r.X == tempRoom.X && r.Y == tempRoom.Y);
+            loadedRooms.Remove(roomToRemove);
+            LoadRoom("Start", tempRoom.X, tempRoom.Y);
         }
         public bool DoesRoomExist( int x, int y )
         {
@@ -145,8 +153,12 @@ namespace Prod_em_on_Team3
             }
 
             inRoom.Visible = true;
-            //inRoom.PreviouslyEntered = true;
             inRoom.PlayerRoom = true;
+
+            if (!inRoom.PreviouslyEntered)
+            {
+                EnemyController.instance.GenerateEntities(inRoom, content);
+            }
 
             _tweener.TweenTo(target: _camera, expression: player => _camera.Position, toValue: inRoom.GetRoomCenter() + new Vector2(580, 380), duration: 0.3f, delay: 0)
                   .Easing(EasingFunctions.Linear);

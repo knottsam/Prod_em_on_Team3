@@ -4,6 +4,7 @@ using Microsoft.Xna.Framework;
 using System.Diagnostics;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
+using Prod_em_on_Team3.EnemySystem;
 
 namespace Prod_em_on_Team3
 {
@@ -23,14 +24,14 @@ namespace Prod_em_on_Team3
         public Rectangle hitbox;
         public List<Door> roomDoors;
         public Rectangle[,] tileMap;
-        public EnemyObj[] enemies;
+        public List<EnemyObj> enemies = new List<EnemyObj>();
 
         public Texture2D tempTexture;
 
         public Room() { }
 
         public Room(int inWidth, int inHeight, int inX, int inY) 
-            :base(new Vector2(inX, inY), new Rectangle(), Color.White)
+            :base(new Vector2(inX, inY), new Rectangle(), Color.White, 1f)
         {
 
             Width = inWidth;
@@ -54,7 +55,7 @@ namespace Prod_em_on_Team3
 
             hitbox = new Rectangle((X*Width)+205, (Y*Height)+205, 1390, 775);
 
-            base.LoadContent(contentManager, spriteBatch, roomName);
+            base.LoadContent(contentManager, roomName);
             BoundingBox = new Rectangle(X*Width, Y*Height, SpriteTexture.Width, SpriteTexture.Height);
             Debug.WriteLine("Room Content load");
 

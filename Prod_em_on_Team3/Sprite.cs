@@ -1,33 +1,29 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
-using Prod_em_on_Team3;
+using SharpDX.Direct2D1.Effects;
 using SharpDX.Direct3D9;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Security.Permissions;
-using System.Windows.Forms;
 
 namespace Prod_em_on_Team3
 {
     public class Sprite : Game1
     {
-
+        private float _Scale = 1f;
         private Texture2D _spriteTexture;
         private Vector2 _spritePosition;
         private Rectangle _boundingBox;
         private Color _spriteColor;
         private bool _Loaded;
         public Sprite() { }
-        public Sprite(Vector2 spritePosition, Rectangle boundingBox, Color spriteColor)
+        public Sprite(Vector2 spritePosition, Rectangle boundingBox, Color spriteColor, float scale)
         {
             _spritePosition = spritePosition;
             _boundingBox = boundingBox;
             _spriteColor = spriteColor;
+            _Scale = scale;
         }
 
-        public virtual bool LoadContent(ContentManager contentManager, SpriteBatch spriteBatch, string TextureName)
+        public virtual bool LoadContent(ContentManager contentManager, string TextureName)
         {
             contentManager.RootDirectory = "Content";
 
@@ -46,9 +42,9 @@ namespace Prod_em_on_Team3
 
         }
 
-        public virtual void Draw(GameTime gameTime, SpriteBatch spriteBatch)
+        public virtual void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(_spriteTexture, _spritePosition, _boundingBox, _spriteColor);
+            spriteBatch.Draw(_spriteTexture, _spritePosition, _boundingBox, _spriteColor, 0f, new Vector2(0,0), _Scale, SpriteEffects.None, 1f);
         }
 
         public Vector2 Position
