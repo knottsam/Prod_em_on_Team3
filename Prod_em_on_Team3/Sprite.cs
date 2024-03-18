@@ -62,5 +62,10 @@ namespace Prod_em_on_Team3
             get { return _spriteTexture; }
             set { _spriteTexture = value; }
         }
+
+        public Color SpriteColour
+        {
+            set { _spriteColor = value; }
+        }
     }
 }

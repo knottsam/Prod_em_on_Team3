@@ -34,6 +34,7 @@ namespace Prod_em_on_Team3
         private int keys = 0;
         private bool combat = false;
         private float bulletSize = 1f;
+        private float bulletPierce = 1f;
         //Stats
 
         private Vector2 playerVelocity;
@@ -164,7 +165,7 @@ namespace Prod_em_on_Team3
                 {
                     Direction.X += playerVelocity.X/2;
                 }
-                Bullet tempBullet = new Bullet(_content, (BulletSpeed*range)*150,_position, Direction, bulletSize, Damage);
+                Bullet tempBullet = new Bullet(_content, (BulletSpeed*range)*150,_position, Direction, bulletSize, Damage, bulletPierce);
                 existingBullets.Add(tempBullet);
 
             }

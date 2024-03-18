@@ -22,6 +22,9 @@ namespace Prod_em_on_Team3.EnemySystem
         private int _contactDMG;
         private float _moveSpeed;
         private bool _aliveStatus = true;
+        private Color _colour;
+        private bool eyeFrames;
+        private float eyeFrameTimer;
 
         public EnemyObj() { }
 
@@ -32,7 +35,9 @@ namespace Prod_em_on_Team3.EnemySystem
             _lastFrameHP = healthPoints;
             _contactDMG = contactDMG;
             _position = spawnPosition;
+            _colour = Color.White;
             Debug.WriteLine("Enemy Created at: " + spawnPosition);
+            eyeFrames = false;
         }
         public void LoadContent(ContentManager Content)
         {
@@ -56,6 +61,22 @@ namespace Prod_em_on_Team3.EnemySystem
 
             int multi = 5;
 
+            if (_lastFrameHP > _healthPoints)
+            {
+                _colour = Color.Red;
+                eyeFrames = true;
+            }
+
+            if (eyeFrames)
+                eyeFrameTimer += gameTime.ElapsedGameTime.Milliseconds;
+
+            if (eyeFrameTimer > 100)
+            {
+                _colour = Color.White;
+                eyeFrames = false;
+                eyeFrameTimer = 0;
+            }
+
             //if (canCollide || _position.Y - _moveSpeed * 5 > currentRoom.Hitbox.Location.Y)//Up
             //                                                                                   //_position.Y -= _moveSpeed * multi;
             //if (canCollide || _position.X - _moveSpeed * 5 > currentRoom.Hitbox.Location.X)//Left
@@ -65,7 +86,7 @@ namespace Prod_em_on_Team3.EnemySystem
             //if (canCollide || _position.X + _moveSpeed * 5 < currentRoom.Hitbox.Location.X + currentRoom.Hitbox.Size.X)//Right
             //                                                                                                                           //_position.X += _moveSpeed * multi;
 
-                            //SetAnimations();
+            //SetAnimations();
 
             _bodyAnimationManager.Position = _position;
 
@@ -80,12 +101,12 @@ namespace Prod_em_on_Team3.EnemySystem
         {
             if (_bodyAnimationManager != null)
             {
-                _bodyAnimationManager.Draw(spriteBatch);
+                _bodyAnimationManager.Draw(spriteBatch, _colour);
             }
             else
                 return;
             if (_texture != null)
-                spriteBatch.Draw(_texture, _bodyAnimationManager.Position + new Vector2(-12, -84), null, Color.White, 0f, new Vector2(0, 0), 3.8f, SpriteEffects.None, 1f);
+                spriteBatch.Draw(_texture, _bodyAnimationManager.Position + new Vector2(-12, -84), null, _colour, 0f, new Vector2(0, 0), 3.8f, SpriteEffects.None, 1f);
         }
 
         public float Health
@@ -107,11 +128,6 @@ namespace Prod_em_on_Team3.EnemySystem
         public Rectangle Hitbox
         {
             get { return _hitBox; }
-        }
-
-        public bool Invulnerable
-        {
-            get { return invulnerable; }
         }
     }
 }

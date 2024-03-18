@@ -28,7 +28,7 @@ namespace Prod_em_on_Team3
         public Sprite bulletSprite;
         public Rectangle _hitbox;
 
-        public Bullet(ContentManager content, float gravTime,Vector2 Position, Vector2 Velocity, float scale, float ATK)
+        public Bullet(ContentManager content, float gravTime,Vector2 Position, Vector2 Velocity, float scale, float ATK, float pierce)
         {
             _damage = ATK;
             airTime = gravTime;
@@ -39,7 +39,7 @@ namespace Prod_em_on_Team3
             _hitbox = new Rectangle((int)bulletSprite.Position.X, (int)bulletSprite.Position.Y, (int)(33*scale), (int)(33*scale));
             hitList = new List<EnemyObj>();
 
-            _pierce = 1; // update later to pass in a pierce value
+            _pierce = pierce;
         }
 
         
@@ -77,7 +77,7 @@ namespace Prod_em_on_Team3
 
             if (_pierce <= 0)
             {
-                // destroy the instance
+                finishedFiring = true;
             }
 
         }

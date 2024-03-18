@@ -34,6 +34,17 @@ namespace Prod_em_on_Team3
                              Color.White);
         }
 
+        public void Draw(SpriteBatch spriteBatch, Color colour)
+        {
+            spriteBatch.Draw(_animation.Texture,
+                             Position,
+                             new Rectangle(_animation.CurrentFrame * _animation.FrameWidth,
+                                           0,
+                                           _animation.FrameWidth,
+                                           _animation.FrameHeight),
+                             colour);
+        }
+
         public void Play(Animation animation)
         {
             if (_animation == animation)
