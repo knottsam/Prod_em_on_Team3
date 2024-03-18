@@ -39,6 +39,11 @@ namespace Prod_em_on_Team3.EnemySystem
         {
             currRoom = inRoom;
 
+            if (currRoom.enemies.Count > 0 ) 
+            {
+                return;
+            }
+
             for (int i = -1; i <= 1; i++)
             {
                 EnemyObj newEnemy = new EnemyObj(0.6f, 10.5f, 1, new Vector2((inRoom.GetRoomCenter() + new Vector2(900, 0)).X + (120 * i), (inRoom.GetRoomCenter() + new Vector2(0, 580)).Y));
@@ -47,6 +52,10 @@ namespace Prod_em_on_Team3.EnemySystem
                 inRoom.enemies.Add(newEnemy);
             }
 
+        }
+        public void RemoveEntities()
+        {
+            currRoom.enemies.Clear();
         }
 
         public void Update(GameTime gameTime)

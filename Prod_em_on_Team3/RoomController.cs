@@ -66,7 +66,8 @@ namespace Prod_em_on_Team3
             newRoomData.x = x;
             newRoomData.y = y;
             newRoomData.room = new Room(1864, 1240, x, y);
-
+            if (roomName == "Start")
+                newRoomData.room.PreviouslyEntered = true;
             currentLoadRoomData = newRoomData;
             LoadRoomRoutine(newRoomData);
             
@@ -146,6 +147,7 @@ namespace Prod_em_on_Team3
         }
         public void OnPlayerEnter(Room inRoom)
         {
+            EnemyController.instance.RemoveEntities();
             foreach (Room room in loadedRooms)
             {
                 room.Visible = false;
