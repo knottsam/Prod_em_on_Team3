@@ -24,7 +24,7 @@ namespace Prod_em_on_Team3
 
         //Stats
         private int Health = 6; //20 max
-        private double Damage = 3;
+        private float Damage = 3.5f;
         private float BulletSpeed = 1f;
         private float shotsPerSec = 2.73f;
         private float moveSpeed = 1f;
@@ -164,7 +164,7 @@ namespace Prod_em_on_Team3
                 {
                     Direction.X += playerVelocity.X/2;
                 }
-                Bullet tempBullet = new Bullet(_content, (BulletSpeed*range)*150,_position, Direction, bulletSize);
+                Bullet tempBullet = new Bullet(_content, (BulletSpeed*range)*150,_position, Direction, bulletSize, Damage);
                 existingBullets.Add(tempBullet);
 
             }
@@ -227,7 +227,7 @@ namespace Prod_em_on_Team3
             set { moveSpeed = value; }
         }
 
-        public double ATK
+        public float ATK
         {
             get { return Damage; }
             set { Damage = value; }

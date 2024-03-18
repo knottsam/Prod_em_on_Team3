@@ -6,6 +6,7 @@ using System.Diagnostics;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Prod_em_on_Team3.EnemySystem;
 
 namespace Prod_em_on_Team3
 {
@@ -16,15 +17,18 @@ namespace Prod_em_on_Team3
         private bool firingbullet;
         private Vector2 bulletVelocity;
         private float _gravity = 0.1f;
+        private float _damage = 3.5f;
         private float airTime = 1000;
         private float statusCheck;
+        private Room currentRoom;
         // 
         public Bullet() { }
         public Sprite bulletSprite;
         public Rectangle _hitbox;
 
-        public Bullet(ContentManager content, float gravTime,Vector2 Position, Vector2 Velocity, float scale)
+        public Bullet(ContentManager content, float gravTime,Vector2 Position, Vector2 Velocity, float scale, float ATK)
         {
+            _damage = ATK;
             airTime = gravTime;
             bulletVelocity = Velocity;
             bulletSprite = new Sprite(new Vector2(Position.X + 15, Position.Y-33* (scale / 2)), null, Color.White, scale);
@@ -33,8 +37,11 @@ namespace Prod_em_on_Team3
             _hitbox = new Rectangle((int)bulletSprite.Position.X, (int)bulletSprite.Position.Y, (int)(33*scale), (int)(33*scale));
         }
 
+        
         public void Update(GameTime gameTime)
         {
+            currentRoom = RoomController.instance.currentRoom; //Player's Current Room, Object Type : [Room]
+
             statusCheck += gameTime.ElapsedGameTime.Milliseconds;
             if (statusCheck > airTime) 
             {
@@ -52,6 +59,14 @@ namespace Prod_em_on_Team3
             bulletSprite.Position += (bulletVelocity + new Vector2(0,_gravity));
             _hitbox.Y = (int)bulletSprite.Position.Y;
             _hitbox.X = (int)bulletSprite.Position.X;
+
+            foreach (EnemyObj enemy in currentRoom.enemies)
+            {
+                if (_hitbox.Intersects(enemy.Hitbox))
+                {
+                    enemy.Health -= _damage;
+                }
+            }
         }
 
         public bool IsFinished

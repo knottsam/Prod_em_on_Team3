@@ -16,6 +16,7 @@ namespace Prod_em_on_Team3.EnemySystem
         protected Room Parent;
         protected Sprite HeadSprite;
         protected Vector2 _position;
+        protected bool invulnerable = false;
 
         private float _healthPoints;
         private int _contactDMG;
@@ -99,6 +100,11 @@ namespace Prod_em_on_Team3.EnemySystem
         {
             get { return _aliveStatus; }
             set { _aliveStatus = value; }
+        }
+
+        public Rectangle Hitbox
+        {
+            get { return _hitBox; }
         }
 
     }
