@@ -28,6 +28,7 @@ namespace Prod_em_on_Team3
         private float BulletSpeed = 1f;
         private float shotsPerSec = 2.73f;
         private float moveSpeed = 1f;
+        private float range = 6.5f;
         private int gold = 0;
         private int bombs = 1;
         private int keys = 0;
@@ -163,7 +164,7 @@ namespace Prod_em_on_Team3
                 {
                     Direction.X += playerVelocity.X/2;
                 }
-                Bullet tempBullet = new Bullet(_content, _position, Direction, bulletSize);
+                Bullet tempBullet = new Bullet(_content, (BulletSpeed*range)*150,_position, Direction, bulletSize);
                 existingBullets.Add(tempBullet);
 
             }
@@ -237,7 +238,11 @@ namespace Prod_em_on_Team3
             get { return shotsPerSec; }
             set { shotsPerSec = value; }
         }
-
+        public float Range
+        {
+            get { return range; }
+            set { range = value; }
+        }
         public float ShotSpeed
         {
             get { return BulletSpeed; }

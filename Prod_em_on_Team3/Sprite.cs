@@ -11,11 +11,11 @@ namespace Prod_em_on_Team3
         private float _Scale = 1f;
         private Texture2D _spriteTexture;
         private Vector2 _spritePosition;
-        private Rectangle _boundingBox;
+        private Rectangle? _boundingBox;
         private Color _spriteColor;
         private bool _Loaded;
         public Sprite() { }
-        public Sprite(Vector2 spritePosition, Rectangle boundingBox, Color spriteColor, float scale)
+        public Sprite(Vector2 spritePosition, Rectangle? boundingBox, Color spriteColor, float scale)
         {
             _spritePosition = spritePosition;
             _boundingBox = boundingBox;
@@ -52,7 +52,7 @@ namespace Prod_em_on_Team3
             get { return _spritePosition; }
             set { _spritePosition = value; }
         }
-        public Rectangle BoundingBox
+        public Rectangle? BoundingBox
         {
             get { return _boundingBox; }
             set { _boundingBox = value; }

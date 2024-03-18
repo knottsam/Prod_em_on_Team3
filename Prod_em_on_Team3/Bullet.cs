@@ -21,14 +21,16 @@ namespace Prod_em_on_Team3
         // 
         public Bullet() { }
         public Sprite bulletSprite;
+        public Rectangle _hitbox;
 
-
-        public Bullet(ContentManager content, Vector2 Position, Vector2 Velocity, float scale)
+        public Bullet(ContentManager content, float gravTime,Vector2 Position, Vector2 Velocity, float scale)
         {
+            airTime = gravTime;
             bulletVelocity = Velocity;
-            bulletSprite = new Sprite(new Vector2(Position.X + 15, Position.Y-33* (scale / 2)), new Rectangle(33,33, 33,33), Color.White, scale);
+            bulletSprite = new Sprite(new Vector2(Position.X + 15, Position.Y-33* (scale / 2)), null, Color.White, scale);
             bulletSprite.LoadContent(content, "Tear");
             firingbullet = true;
+            _hitbox = new Rectangle((int)bulletSprite.Position.X, (int)bulletSprite.Position.Y, (int)(33*scale), (int)(33*scale));
         }
 
         public void Update(GameTime gameTime)
@@ -48,6 +50,8 @@ namespace Prod_em_on_Team3
                 //Put in animated tear burst here
             }
             bulletSprite.Position += (bulletVelocity + new Vector2(0,_gravity));
+            _hitbox.Y = (int)bulletSprite.Position.Y;
+            _hitbox.X = (int)bulletSprite.Position.X;
         }
 
         public bool IsFinished
