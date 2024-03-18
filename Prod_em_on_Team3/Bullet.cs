@@ -19,8 +19,10 @@ namespace Prod_em_on_Team3
         private float _gravity = 0.1f;
         private float _damage = 3.5f;
         private float airTime = 1000;
+        private float _pierce = 0f;
         private float statusCheck;
         private Room currentRoom;
+        private List<EnemyObj> hitList;
         // 
         public Bullet() { }
         public Sprite bulletSprite;
@@ -35,6 +37,9 @@ namespace Prod_em_on_Team3
             bulletSprite.LoadContent(content, "Tear");
             firingbullet = true;
             _hitbox = new Rectangle((int)bulletSprite.Position.X, (int)bulletSprite.Position.Y, (int)(33*scale), (int)(33*scale));
+            hitList = new List<EnemyObj>();
+
+            _pierce = 1; // update later to pass in a pierce value
         }
 
         
@@ -62,11 +67,19 @@ namespace Prod_em_on_Team3
 
             foreach (EnemyObj enemy in currentRoom.enemies)
             {
-                if (_hitbox.Intersects(enemy.Hitbox))
+                if (_hitbox.Intersects(enemy.Hitbox) && !hitList.Contains(enemy))
                 {
                     enemy.Health -= _damage;
+                    hitList.Add(enemy);
+                    _pierce -= 1f;
                 }
             }
+
+            if (_pierce <= 0)
+            {
+                // destroy the instance
+            }
+
         }
 
         public bool IsFinished

@@ -80,9 +80,21 @@ namespace Prod_em_on_Team3.EnemySystem
             {
                 currState = EnemyState.Still;
             }
+
+            for (int i = 0; i < currRoom.enemies.Count; i++)
+            {
+                currRoom.enemies[i].Update(gameTime);
+                if (currRoom.enemies[i].Health <= 0)
+                    currRoom.enemies.Remove(currRoom.enemies[i]);
+            }
+
             foreach (EnemyObj enemy in currRoom.enemies)
             {
                 enemy.Update(gameTime);
+                if (enemy.Health <=0)
+                {
+                    
+                }
             }
         }
 

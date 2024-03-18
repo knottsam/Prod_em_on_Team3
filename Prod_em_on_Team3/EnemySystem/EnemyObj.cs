@@ -16,9 +16,9 @@ namespace Prod_em_on_Team3.EnemySystem
         protected Room Parent;
         protected Sprite HeadSprite;
         protected Vector2 _position;
-        protected bool invulnerable = false;
 
         private float _healthPoints;
+        private float _lastFrameHP;
         private int _contactDMG;
         private float _moveSpeed;
         private bool _aliveStatus = true;
@@ -29,13 +29,13 @@ namespace Prod_em_on_Team3.EnemySystem
         {
             _moveSpeed = moveSpeed;
             _healthPoints = healthPoints;
+            _lastFrameHP = healthPoints;
             _contactDMG = contactDMG;
             _position = spawnPosition;
             Debug.WriteLine("Enemy Created at: " + spawnPosition);
         }
         public void LoadContent(ContentManager Content)
         {
-
             _hitBox = new Rectangle(0, 0, 224, 100);
 
             _texture = Content.Load<Texture2D>("Head - ENEMY1");
@@ -72,6 +72,8 @@ namespace Prod_em_on_Team3.EnemySystem
             _hitBox = new Rectangle((int)_position.X, (int)_position.Y, 50, 100);
 
             _bodyAnimationManager.Update(gameTime);
+
+            _lastFrameHP = _healthPoints;
         }
 
         public virtual void Draw(SpriteBatch spriteBatch)
@@ -107,5 +109,9 @@ namespace Prod_em_on_Team3.EnemySystem
             get { return _hitBox; }
         }
 
+        public bool Invulnerable
+        {
+            get { return invulnerable; }
+        }
     }
 }
